@@ -15,13 +15,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <title>Eventifier</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="css/modern-business.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>/css/modern-business.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="<?php echo base_url();?>/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -45,6 +45,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
+                <!-- <img src="images/logo_1" alt=""> -->
                 <a class="navbar-brand" href="<?= base_url('homepage') ?>">Eventifier</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -54,13 +55,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <a href="<?= base_url('login') ?>">Log in</a>
                     </li>
                     <li>
+                        <a href="<?= base_url('signup') ?>">Sign up</a>
+                    </li>
+                    <li>
                         <a href="<?= base_url('about') ?>">About</a>
                     </li>
                     <li>
                         <a href="<?= base_url('services') ?>">Services</a>
                     </li>
                     <li>
-                        <a href="contact.html">Contact</a>
+                        <a href="<?= base_url('contact') ?>">Contact</a>
                     </li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Portfolio <b class="caret"></b></a>
