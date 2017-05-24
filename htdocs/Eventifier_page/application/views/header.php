@@ -15,7 +15,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <title>Eventifier</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="<?php echo base_url();?>/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>/css/bootstrap.css" rel="stylesheet">
 
     <!-- Custom CSS -->
     <link href="<?php echo base_url();?>/css/modern-business.css" rel="stylesheet">
@@ -45,18 +45,25 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <!-- <img src="images/logo_1" alt=""> -->
-                <a class="navbar-brand" href="<?= base_url('homepage') ?>">Eventifier</a>
+                <a class="navbar-brand" href="<?= base_url('userspage') ?>">
+                <img src="images/logo_1.png" style="width:150px;height:30px;">
+                </a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
-                    <li>
+                    <?php if (! isset($_SESSION['user_name'])): ?>
+                    <li id="login">
                         <a href="<?= base_url('login') ?>">Log in</a>
                     </li>
                     <li>
                         <a href="<?= base_url('signup') ?>">Sign up</a>
                     </li>
+                    <li>
+                        <a href="<?= base_url('signup') ?>">Subscribe your organization</a>
+                    </li>
+                    <?php endif ?>
+                    <?php if (isset($_SESSION['user_name'])): ?>
                     <li>
                         <a href="<?= base_url('about') ?>">About</a>
                     </li>
@@ -66,7 +73,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <li>
                         <a href="<?= base_url('contact') ?>">Contact</a>
                     </li>
-                    <li class="dropdown">
+                    <?php endif ?>
+                    <?php if (isset($_SESSION['user_name'])): ?>
+                    <li>
+                        <a href="<?= base_url('logout') ?>">Log out</a>
+                    </li>
+                    <?php endif ?>
+                    <!-- <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Portfolio <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>
@@ -85,8 +98,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <a href="portfolio-item.html">Single Portfolio Item</a>
                             </li>
                         </ul>
-                    </li>
-                    <li class="dropdown">
+                    </li> -->
+                    <!-- <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Blog <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>
@@ -99,8 +112,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <a href="blog-post.html">Blog Post</a>
                             </li>
                         </ul>
-                    </li>
-                    <li class="dropdown">
+                    </li> -->
+                    <!-- <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Other Pages <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>
@@ -119,7 +132,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <a href="pricing.html">Pricing Table</a>
                             </li>
                         </ul>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
             <!-- /.navbar-collapse -->

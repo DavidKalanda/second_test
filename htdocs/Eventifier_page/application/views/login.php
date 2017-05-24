@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 ?>
 
-  <h1>Login</h1>
+  <h1><b>Login</b></h1>
   <div class="container">
     <br /><br /><br />
     <?= form_open('welcome/login_validation'); ?>
@@ -20,9 +20,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <?php echo $this->session->flashdata("error"); ?>
       </div>
       <br /><br />
-      <div class="">
+      <!-- <div class="">
         <?php echo anchor('signup', 'Sign up'); ?>
-      </div>
+      </div> -->
     </form>
   </div>
 

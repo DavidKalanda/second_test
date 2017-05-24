@@ -46,10 +46,11 @@
         <!-- Marketing Icons Section -->
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">
-                    Welcome to Eventifier
-                </h1>
+                <!-- <h1 class="page-header">
+                    Welcome
+                </h1> -->
             </div>
+            <br></br>
             <div class="col-md-4">
                 <div class="panel panel-default">
                     <div class="panel-heading">

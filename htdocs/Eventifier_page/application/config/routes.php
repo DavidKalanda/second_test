@@ -57,5 +57,7 @@ $route['login']= 'Welcome/login';
 $route['signup']= 'Welcome/signup';
 $route['contact']= 'Welcome/contact';
 $route['userspage']= 'Welcome/userspage';
+$route['logout']= 'Welcome/logout';
+$route['createEvent']= 'Welcome/createEvent';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

@@ -64,9 +64,15 @@ class Welcome extends CI_Controller {
 
 	public function userspage()
 	{
-		$this->load->view('header');
-		$this->load->view('userspage');
-		$this->load->view('footer');
+		if (isset($_SESSION['user_name'])) {
+			$this->load->view('header');
+			$this->load->view('userspage');
+			$this->load->view('footer');
+		}else {
+			$this->load->view('header');
+			$this->load->view('main_page');
+			$this->load->view('footer');
+		}
 	}
 
 	// Opens contact page when link is clicked
@@ -74,6 +80,15 @@ class Welcome extends CI_Controller {
 	{
 		$this->load->view('header');
 		$this->load->view('contact');
+		$this->load->view('footer');
+	}
+
+	public function logout()
+	{
+		unset($_SESSION['user_name']);
+		$this->session->sess_destroy();
+		$this->load->view('header');
+		$this->load->view('main_page');
 		$this->load->view('footer');
 	}
 
@@ -91,7 +106,8 @@ class Welcome extends CI_Controller {
 		if ($this->login_model->can_login($user_name,$password)) {
 			/// stores user in session
 			$session_data = array(
-				'user_name'=> $user_name
+				'user_name'=> $user_name,
+				'user_id'=>$user_id
 			);
 			$this->session->set_userdata($session_data);
 			//complete with redirect location homepage
@@ -147,13 +163,27 @@ public function user_registration(){
 		$this->load->view('homepage', $data);
 }
 
+public function createEvent()
+{
+	$this->load->view('header');
+	$this->load->view('createEvent');
+	$this->load->view('footer');
+}
+
+public function outputEvent()
+{
+	$this->load->model('event_model');
+	$events = $this->$db->all_events();
+	$this->load->view('userspage',$events);
+}
+
 /*
-	 * create user
+	 * creates event in database
 	 */
 public function create_event(){
 		$data = array();
 		$userData = array();
-		if($this->input->post('creatSubmit')){
+		if($this->input->post('createSubmit')){
 				$this->form_validation->set_rules('title', 'title', 'required');
 				$this->form_validation->set_rules('date', 'date', 'required');
 				$this->form_validation->set_rules('time', 'time', 'required');
