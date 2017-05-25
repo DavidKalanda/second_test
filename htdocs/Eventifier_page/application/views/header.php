@@ -45,8 +45,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="<?= base_url('userspage') ?>">
-                <img src="images/logo_1.png" style="width:150px;height:30px;">
+                <?php if (! isset($_SESSION['user_name'])): ?>
+                  <a class="navbar-brand" href="<?= base_url('homepage') ?>">
+                <?php else: ?>
+                  <a class="navbar-brand" href="<?= base_url('userspage') ?>">
+                <?php endif; ?>
+
+                <img src="images/logo_3.png" style="width:230px;height:60px; margin-left:-70px; margin-top:-10px;">
                 </a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->

@@ -66,7 +66,8 @@ class Welcome extends CI_Controller {
 	{
 		if (isset($_SESSION['user_name'])) {
 			$this->load->view('header');
-			$this->load->view('userspage');
+			$this->outputEvent();
+			//$this->load->view('userspage');
 			$this->load->view('footer');
 		}else {
 			$this->load->view('header');
@@ -173,8 +174,8 @@ public function createEvent()
 public function outputEvent()
 {
 	$this->load->model('event_model');
-	$events = $this->$db->all_events();
-	$this->load->view('userspage',$events);
+	$data['events'] = $this->event_model->all_events();
+	$this->load->view('userspage',$data);
 }
 
 /*
@@ -197,10 +198,10 @@ public function create_event(){
 				);
 
 				if($this->form_validation->run() == true){
-						$insert = $this->db->insert('create_event',$userData);
+						$insert = $this->db->insert('events',$userData);
 						if($insert){
 								$this->session->set_userdata('success_msg', 'Event was created successfully.');
-								$this->load->view('homepage');
+								$this->load->view('userspage');
 						}else{
 								$data['error_msg'] = 'Some problems occured, please try again.';
 						}
@@ -208,7 +209,7 @@ public function create_event(){
 		}
 		//$data['title'] = $userData;
 		//load the view
-		$this->load->view('homepage', $data);
+		redirect('/userspage');
 }
 
 }

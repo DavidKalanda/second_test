@@ -3,7 +3,7 @@
 <div class="row">
 
           <div class="container">
-            <?php echo form_open('users/create_event'); ?>
+            <?php echo form_open('welcome/create_event'); ?>
               <div class="form-group row">
                 <label for="example-text-input" class="col-2 col-form-label">Title</label>
                 <div class="col-10">
@@ -20,6 +20,12 @@
                 <label for="example-time-input" class="col-2 col-form-label">Time</label>
                 <div class="col-10">
                   <input class="form-control" type="time" value="13:45:00" name="time">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-2 col-form-label">Price</label>
+                <div class="col-10">
+                  <input class="form-control" type="price" value="$" name="price">
                 </div>
               </div>
                 <div class="form-group row">
