@@ -70,16 +70,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <?php endif ?>
                     <?php if (isset($_SESSION['user_name'])): ?>
                     <li>
-                        <a href="<?= base_url('about') ?>"><i class="fa fa-comment" aria-hidden="true"></i> Message</a>
+                        <a href="<?= base_url('#') ?>"><i class="fa fa-comment" aria-hidden="true"></i> Message</a>
                     </li>
                     <li>
-                        <a href="<?= base_url('about') ?>"> <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> About</a>
-                    </li>
-                    <li>
-                        <a href="<?= base_url('services') ?>">Services</a>
-                    </li>
-                    <li>
-                        <a href="<?= base_url('contact') ?>"><i class="fa fa-address-book-o" aria-hidden="true"></i> Contact</a>
+                        <a href="<?= base_url('#') ?>"> <i class="fa fa-bell" aria-hidden="true"></i></i> Notification</a>
                     </li>
                     <?php endif ?>
                     <?php if (isset($_SESSION['user_name'])): ?>

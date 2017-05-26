@@ -120,7 +120,7 @@ class Welcome extends CI_Controller {
 			else {
 					$this->session->set_flashdata('error','Invalid username and password');
 					//complete with redirect to login page
-					$this->load->view('login');
+					$this->load->view('/login');
 					//redirect('http://localhost/Test/user/welcome_message');
 						}
 		}

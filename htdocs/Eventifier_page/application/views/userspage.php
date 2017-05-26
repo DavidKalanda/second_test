@@ -13,7 +13,7 @@
         <div class="carousel-inner">
             <div class="item active">
                 <div class="fill">
-                  <video src="videos/video01.mp4" autoplay loop width="1340px" height="400px"></video>
+                  <video src="videos/video01.mp4" autoplay loop width="1340px height="400px"></video>
                 </div>
                 <div class="carousel-caption">
                     <button type="button" class="btn btn-default">
