@@ -65,7 +65,9 @@ class Welcome extends CI_Controller {
 	public function userspage()
 	{
 		if (isset($_SESSION['user_name'])) {
-			$this->load->view('header');
+			$this->load->model('login_model');
+			$data['users'] = $this->login_model->all_users();
+			$this->load->view('header',$data);
 			$this->outputEvent();
 			//$this->load->view('userspage');
 			$this->load->view('footer');

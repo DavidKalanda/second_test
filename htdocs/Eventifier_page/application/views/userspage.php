@@ -13,10 +13,12 @@
         <div class="carousel-inner">
             <div class="item active">
                 <div class="fill">
-                  <video src="videos/video02.mp4" autoplay loop width="1340px" height="400px"></video>
+                  <video src="videos/video01.mp4" autoplay loop width="1340px" height="400px"></video>
                 </div>
                 <div class="carousel-caption">
-                    <h2><a href="<?= base_url('signup') ?>">Sign up</a></h2>
+                    <button type="button" class="btn btn-default">
+                      <a href="<?= base_url('signup') ?>";>Sign up</a>
+                    </button>
                 </div>
             </div>
             <!-- <div class="item">
@@ -49,9 +51,17 @@
         <div class="row">
             <div class="col-lg-12">
                 <h3 class="page-header">
-                    All Event
+                  <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Events
+                      <span class="caret"></span></button>
+                      <ul class="dropdown-menu">
+                        <li><a href="#">All Events</a></li>
+                        <li><a href="#">Your Events</a></li>
+                      </ul>
+                    </div>
                 </h3>
             </div>
+
             <?php foreach($events as $event): ?>
             <div class="col-md-4">
                 <div class="panel panel-default">

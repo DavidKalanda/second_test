@@ -59,29 +59,35 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <ul class="nav navbar-nav navbar-right">
                     <?php if (! isset($_SESSION['user_name'])): ?>
                     <li id="login">
-                        <a href="<?= base_url('login') ?>">Log in</a>
+                        <a href="<?= base_url('login') ?>"><i class="fa fa-sign-in" aria-hidden="true"></i> Log in</a>
                     </li>
                     <li>
-                        <a href="<?= base_url('signup') ?>">Sign up</a>
+                        <a href="<?= base_url('signup') ?>"> <i class="fa fa-user-circle-o" aria-hidden="true"></i>Sign up</a>
                     </li>
                     <li>
-                        <a href="<?= base_url('signup') ?>">Subscribe your organization</a>
+                        <a href="<?= base_url('signup') ?>"><i class="fa fa-building-o" aria-hidden="true"></i> Subscribe your organization</a>
                     </li>
                     <?php endif ?>
                     <?php if (isset($_SESSION['user_name'])): ?>
                     <li>
-                        <a href="<?= base_url('about') ?>">About</a>
+                        <a href="<?= base_url('about') ?>"><i class="fa fa-comment" aria-hidden="true"></i> Message</a>
+                    </li>
+                    <li>
+                        <a href="<?= base_url('about') ?>"> <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> About</a>
                     </li>
                     <li>
                         <a href="<?= base_url('services') ?>">Services</a>
                     </li>
                     <li>
-                        <a href="<?= base_url('contact') ?>">Contact</a>
+                        <a href="<?= base_url('contact') ?>"><i class="fa fa-address-book-o" aria-hidden="true"></i> Contact</a>
                     </li>
                     <?php endif ?>
                     <?php if (isset($_SESSION['user_name'])): ?>
                     <li>
-                        <a href="<?= base_url('logout') ?>">Log out</a>
+                        <a href="<?= base_url('logout') ?>"><i class="fa fa-sign-out" aria-hidden="true"></i> Log out</a>
+                    </li>
+                    <li>
+                      <a href="#"><i class="fa fa-user" aria-hidden="true"></i> <?=$_SESSION['user_name'] ?></a>
                     </li>
                     <?php endif ?>
                     <!-- <li class="dropdown">
