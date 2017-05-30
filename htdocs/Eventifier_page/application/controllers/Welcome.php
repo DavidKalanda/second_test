@@ -53,6 +53,7 @@ class Welcome extends CI_Controller {
 	{
 		$this->load->view('header');
 		$this->load->view('login');
+		$this->load->view('footer');
 	}
 
 	// Opens signup page when link is clicked
@@ -60,11 +61,12 @@ class Welcome extends CI_Controller {
 	{
 		$this->load->view('header');
 		$this->load->view('signup');
+		$this->load->view('footer');
 	}
 
 	public function userspage()
 	{
-		if (isset($_SESSION['user_name'])) {
+		if (isset($_SESSION['first_name'])) {
 			$this->load->model('login_model');
 			$data['users'] = $this->login_model->all_users();
 			$this->load->view('header',$data);
@@ -88,7 +90,7 @@ class Welcome extends CI_Controller {
 
 	public function logout()
 	{
-		unset($_SESSION['user_name']);
+		unset($_SESSION['first_name']);
 		$this->session->sess_destroy();
 		$this->load->view('header');
 		$this->load->view('main_page');
@@ -98,18 +100,18 @@ class Welcome extends CI_Controller {
 	// Validates the login information
 	public function login_validation(){
 	$this->load->library('form_validation');
-	$this->form_validation->set_rules('user_name','user_name','required');
+	$this->form_validation->set_rules('first_name','first_name','required');
 	$this->form_validation->set_rules('password','password','required');
 	if ($this->form_validation->run())
 	{
-		$user_name = $this->input->post('user_name');
+		$first_name = $this->input->post('first_name');
 		$password = $this->input->post('password');
 		// model function
 		$this->load->model('login_model');
-		if ($this->login_model->can_login($user_name,$password)) {
+		if ($this->login_model->can_login($first_name,$password)) {
 			/// stores user in session
 			$session_data = array(
-				'user_name'=> $user_name,
+				'first_name'=> $first_name,
 				'user_id'=>$user_id
 			);
 			$this->session->set_userdata($session_data);
@@ -137,33 +139,43 @@ public function user_registration(){
 		$data = array();
 		$userData = array();
 		if($this->input->post('regisSubmit')){
-				$this->form_validation->set_rules('user_name', 'user_name', 'required');
-				//$this->form_validation->set_rules('email', 'Email', 'required|valid_email|callback_email_check');
+				$this->form_validation->set_rules('first_name', 'first_name', 'required');
+				$this->form_validation->set_rules('last_name', 'last_name', 'required');
+				$this->form_validation->set_rules('email_address', 'email_address', 'required|valid_email');//|callback_email_check
 				$this->form_validation->set_rules('password', 'password', 'required');
 				$this->form_validation->set_rules('conf_password', 'confirm password', 'required|matches[password]');
-
+				echo "TEST ";
 				// to hash the password use md5($this->input->post('password'))
 				$userData = array(
-						'user_name' => strip_tags($this->input->post('user_name')),
-						//'email' => strip_tags($this->input->post('email')),
+						'first_name' => strip_tags($this->input->post('first_name')),
+						'last_name' => strip_tags($this->input->post('last_name')),
+						'email_address' => strip_tags($this->input->post('email_address')),
 						'password' => $this->input->post('password'),
 						//'gender' => $this->input->post('gender'),
 						//'phone' => strip_tags($this->input->post('phone'))
 				);
-
+				echo "TEST2: ".$userData['first_name'];
 				if($this->form_validation->run() == true){
 						$insert = $this->db->insert('users',$userData);
+						echo "TEST3: ".$insert;
 						if($insert){
 								$this->session->set_userdata('success_msg', 'Your registration was successfully. Please login to your account.');
-								$this->load->view('homepage');
+								redirect('/login');
 						}else{
 								$data['error_msg'] = 'Some problems occured, please try again.';
 						}
 				}
+				else {
+					$data['first_name'] = $userData;
+					redirect('/signup');
+					//$this->load->view('/signup', $data);
+				}
 		}
-		$data['user_name'] = $userData;
-		//load the view
-		$this->load->view('homepage', $data);
+		else {
+			$data['first_name'] = $userData;
+			//load the view
+			$this->load->view('login', $data);
+		}
 }
 
 public function createEvent()

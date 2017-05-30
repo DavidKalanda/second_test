@@ -13,7 +13,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <meta name="author" content="">
 
     <title>Eventifier</title>
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <!-- Bootstrap Core CSS -->
     <link href="<?php echo base_url();?>/css/bootstrap.css" rel="stylesheet">
 
@@ -45,7 +47,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <?php if (! isset($_SESSION['user_name'])): ?>
+                <?php if (! isset($_SESSION['first_name'])): ?>
                   <a class="navbar-brand" href="<?= base_url('homepage') ?>">
                 <?php else: ?>
                   <a class="navbar-brand" href="<?= base_url('userspage') ?>">
@@ -57,31 +59,31 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
-                    <?php if (! isset($_SESSION['user_name'])): ?>
-                    <li id="login">
+                    <?php if (! isset($_SESSION['first_name'])): ?>
+                    <li>
                         <a href="<?= base_url('login') ?>"><i class="fa fa-sign-in" aria-hidden="true"></i> Log in</a>
                     </li>
                     <li>
-                        <a href="<?= base_url('signup') ?>"> <i class="fa fa-user-circle-o" aria-hidden="true"></i>Sign up</a>
+                        <a href="<?= base_url('signup') ?>"><i class="fa fa-plus" aria-hidden="true"></i> Sign up</a>
                     </li>
                     <li>
                         <a href="<?= base_url('signup') ?>"><i class="fa fa-building-o" aria-hidden="true"></i> Subscribe your organization</a>
                     </li>
                     <?php endif ?>
-                    <?php if (isset($_SESSION['user_name'])): ?>
+                    <?php if (isset($_SESSION['first_name'])): ?>
                     <li>
                         <a href="<?= base_url('#') ?>"><i class="fa fa-comment" aria-hidden="true"></i> Message</a>
                     </li>
                     <li>
-                        <a href="<?= base_url('#') ?>"> <i class="fa fa-bell" aria-hidden="true"></i></i> Notification</a>
+                        <a href="<?= base_url('#') ?>"><i class="fa fa-bell" aria-hidden="true"></i></i> Notification</a>
                     </li>
                     <?php endif ?>
-                    <?php if (isset($_SESSION['user_name'])): ?>
+                    <?php if (isset($_SESSION['first_name'])): ?>
                     <li>
                         <a href="<?= base_url('logout') ?>"><i class="fa fa-sign-out" aria-hidden="true"></i> Log out</a>
                     </li>
                     <li>
-                      <a href="#"><i class="fa fa-user" aria-hidden="true"></i> <?=$_SESSION['user_name'] ?></a>
+                      <a href="#"><i class="fa fa-user" aria-hidden="true"></i> <?=$_SESSION['first_name'] ?></a>
                     </li>
                     <?php endif ?>
                     <!-- <li class="dropdown">

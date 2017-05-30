@@ -27,12 +27,17 @@ section,
 summary {
   display: block;
 }
+.createEvent{
+  text-align: -webkit-left;
+}
+
 audio,
 canvas,
 progress,
 video {
   display: inline-block;
   vertical-align: baseline;
+  object-fit: inherit;
 }
 audio:not([controls]) {
   display: none;
@@ -2548,7 +2553,7 @@ output {
 }
 .form-control {
   display: block;
-  width: 100%;
+  width: 500px;
   height: 34px;
   padding: 6px 12px;
   font-size: 14px;
@@ -2630,6 +2635,7 @@ input[type="search"] {
 }
 .form-group {
   margin-bottom: 15px;
+  /*text-align: -webkit-center;*/
 }
 .radio,
 .checkbox {
@@ -5837,6 +5843,7 @@ button.list-group-item-danger.active:focus {
 .well-lg {
   padding: 24px;
   border-radius: 6px;
+  text-align: center;
 }
 .well-sm {
   padding: 9px;

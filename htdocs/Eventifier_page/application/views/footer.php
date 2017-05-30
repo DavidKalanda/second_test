@@ -46,5 +46,4 @@
             <p class="pull-left"> Copyright © Footer 2017. All right reserved. </p>
         </div>
     </div>
-    <!--/.footer-bottom-->
 </footer>

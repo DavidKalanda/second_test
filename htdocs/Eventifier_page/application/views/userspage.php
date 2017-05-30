@@ -10,17 +10,17 @@
         </ol> -->
 
         <!-- Wrapper for slides -->
-        <div class="carousel-inner">
+        <!-- <div class="carousel-inner">
             <div class="item active">
                 <div class="fill">
-                  <video src="videos/video01.mp4" autoplay loop width="1340px height="400px"></video>
+                  <video src="videos/video03.mp4" autoplay loop ></video>
                 </div>
                 <div class="carousel-caption">
                     <button type="button" class="btn btn-default">
                       <a href="<?= base_url('signup') ?>";>Sign up</a>
                     </button>
                 </div>
-            </div>
+            </div> -->
             <!-- <div class="item">
                 <div class="fill" style="background-image:url('http://placehold.it/1900x1080&text=Slide Two');"></div>
                 <div class="carousel-caption">
