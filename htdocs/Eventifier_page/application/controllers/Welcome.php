@@ -30,6 +30,7 @@ class Welcome extends CI_Controller {
 	public function loadPages()
 	{
 		$this->load->view('header');
+		$this->outputLocalEvent();
 		$this->load->view('main_page');
 		$this->load->view('footer');
 	}
@@ -190,6 +191,14 @@ public function outputEvent()
 	$this->load->model('event_model');
 	$data['events'] = $this->event_model->all_events();
 	$this->load->view('userspage',$data);
+	$this->load->view('main_page',$data);
+}
+
+public function outputLocalEvent()
+{
+	$this->load->model('event_model');
+	$data['events'] = $this->event_model->all_events();
+	$this->load->view('main_page',$data);
 }
 
 /*

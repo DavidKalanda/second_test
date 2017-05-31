@@ -26,18 +26,30 @@
                 </h2>
             </div>
             <br></br>
+            <?php foreach($events as $event): ?>
             <div class="col-md-4">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h4><i class="fa fa-fw fa-check"></i> Bootstrap v3.3.7</h4>
+
+                        <h4><i class="fa fa-fw fa-check"></i><?= ($event['title']) ?></h4>
                     </div>
                     <div class="panel-body">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur in alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus eveniet incidunt dicta nostrum quod?</p>
-                        <a href="#" class="btn btn-default">Learn More</a>
+                      <?php if (strlen($event['content'])>200): ?>
+                        <p><?= substr($event['content'],0,200) ?>...</p>
+                      <?php else: ?>
+								        <?= $event['content'] ?>
+							       <?php endif ?>
+                        <!-- <a href="#" class="btn btn-default">Learn More</a> -->
+                    </div>
+                    <div class="panel-footer">
+                      <p>Date:<?= ($event['date']) ?></p>
+                      <p>Date:$<?= ($event['price']) ?></p>
+                      <a href="#" class="btn btn-default">Learn More</a>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
+          <?php endforeach ?>
+            <!-- <div class="col-md-4">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4><i class="fa fa-fw fa-gift"></i> Free &amp; Open Source</h4>
@@ -47,8 +59,8 @@
                         <a href="#" class="btn btn-default">Learn More</a>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-4">
+            </div> -->
+            <!-- <div class="col-md-4">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4><i class="fa fa-fw fa-compass"></i> Easy to Use</h4>
@@ -58,7 +70,7 @@
                         <a href="#" class="btn btn-default">Learn More</a>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
 
         <hr>
