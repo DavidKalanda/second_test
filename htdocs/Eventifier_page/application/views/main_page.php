@@ -8,6 +8,10 @@
                 </div>
                 <div class="carousel-caption">
                     <button type="button" class="btn btn-default btn-lg">
+                      <a href="<?= base_url('createEvent') ?>";><b>Create Event</b></a>
+                    </button>
+                    <br></br>
+                    <button type="button" class="btn btn-default btn-lg">
                       <a href="<?= base_url('signup') ?>";>Sign up</a>
                     </button>
                 </div>
@@ -19,58 +23,44 @@
     <div class="container">
 
         <!-- Marketing Icons Section -->
-        <div class="row">
+        <div class="row form-group">
             <div class="col-lg-12">
                 <h2 class="page-header">
                     Local Events
                 </h2>
             </div>
             <br></br>
-            <?php foreach($events as $event): ?>
-            <div class="col-md-4">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
 
-                        <h4><i class="fa fa-fw fa-check"></i><?= ($event['title']) ?></h4>
-                    </div>
-                    <div class="panel-body">
-                      <?php if (strlen($event['content'])>200): ?>
-                        <p><?= substr($event['content'],0,200) ?>...</p>
-                      <?php else: ?>
-								        <?= $event['content'] ?>
-							       <?php endif ?>
-                        <!-- <a href="#" class="btn btn-default">Learn More</a> -->
-                    </div>
-                    <div class="panel-footer">
-                      <p>Date:<?= ($event['date']) ?></p>
-                      <p>Date:$<?= ($event['price']) ?></p>
-                      <a href="#" class="btn btn-default">Learn More</a>
-                    </div>
+            <!-- Event info -->
+            <?php foreach($events as $event): ?>
+            <div class="row">
+              <div class="col-xs-12 col-md-4">
+                  <div class="panel panel-default">
+                      <div class="panel-image">
+                          <img src="/Eventifier_page/images/Music.jpg" class="panel-image-preview" />
+                          <h6>$<?= ($event['price']) ?></h6>
+                          <h4><?= ($event['title']) ?></h4>
+                          <p>Date:<?= ($event['start_date']) ?> - Time:$<?= ($event['start_time']) ?></p>
+                      </div>
+
+                      <!-- <div class="panel-body">
+                        <?php if (strlen($event['content'])>200): ?>
+                          <p><?= substr($event['content'],0,200) ?>...</p>
+                        <?php else: ?>
+  								        <?= $event['content'] ?>
+  							       <?php endif ?>
+                           <a href="#" class="btn btn-default">Learn More</a>
+                      </div> -->
+                      <div class="panel-footer text-center">
+                          <a href="#download"><span class="glyphicon glyphicon-download"></span></a>
+                          <a href="#facebook"><span class="fa fa-facebook"></span></a>
+                          <a href="#twitter"><span class="fa fa-twitter"></span></a>
+                          <a href="#share"><span class="glyphicon glyphicon-share-alt"></span></a>
+                      </div>
+                  </div>
                 </div>
-            </div>
-          <?php endforeach ?>
-            <!-- <div class="col-md-4">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4><i class="fa fa-fw fa-gift"></i> Free &amp; Open Source</h4>
-                    </div>
-                    <div class="panel-body">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur in alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus eveniet incidunt dicta nostrum quod?</p>
-                        <a href="#" class="btn btn-default">Learn More</a>
-                    </div>
-                </div>
-            </div> -->
-            <!-- <div class="col-md-4">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4><i class="fa fa-fw fa-compass"></i> Easy to Use</h4>
-                    </div>
-                    <div class="panel-body">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur in alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus eveniet incidunt dicta nostrum quod?</p>
-                        <a href="#" class="btn btn-default">Learn More</a>
-                    </div>
-                </div>
-            </div> -->
+  	         </div>
+             <?php endforeach ?>
         </div>
 
         <hr>

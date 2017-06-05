@@ -1,22 +1,48 @@
 
 
     <!-- Header Carousel -->
-    <!-- <header id="myCarousel" class="carousel slide"> -->
+    <header id="myCarousel" class="carousel slide">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>
 
-        <!-- Wrapper for slides -->
-        <!-- <div class="carousel-inner">
+        <!-- Wrapper for Slides -->
+        <div class="carousel-inner">
             <div class="item active">
-                <div class="fill">
-                  <video src="videos/video03.mp4" autoplay loop ></video>
-                </div>
+                <!-- Set the first background image using inline CSS below. -->
+                <div class="fill" style="background-image:url('http://placehold.it/1900x1080&text=Slide One');"></div>
                 <div class="carousel-caption">
-                    <button type="button" class="btn btn-default">
-                      <a href="<?= base_url('signup') ?>";>Sign up</a>
-                    </button>
+                    <h2>Caption 1</h2>
+                </div>
+            </div>
+            <div class="item">
+                <!-- Set the second background image using inline CSS below. -->
+                <div class="fill" style="background-image:url('http://placehold.it/1900x1080&text=Slide Two');"></div>
+                <div class="carousel-caption">
+                    <h2>Caption 2</h2>
+                </div>
+            </div>
+            <div class="item">
+                <!-- Set the third background image using inline CSS below. -->
+                <div class="fill" style="background-image:url('http://placehold.it/1900x1080&text=Slide Three');"></div>
+                <div class="carousel-caption">
+                    <h2>Caption 3</h2>
                 </div>
             </div>
         </div>
-    </header>  -->
+
+        <!-- Controls -->
+        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+            <span class="icon-prev"></span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" data-slide="next">
+            <span class="icon-next"></span>
+        </a>
+
+    </header>
 
     <!-- Page Content -->
     <div class="container">
@@ -42,6 +68,7 @@
                     <div class="panel-heading">
 
                         <h4><i class="fa fa-fw fa-check"></i><?= ($event['title']) ?></h4>
+                        <h6>$<?= ($event['price']) ?></h6>
                     </div>
                     <div class="panel-body">
                       <?php if (strlen($event['content'])>200): ?>
@@ -52,8 +79,8 @@
                         <!-- <a href="#" class="btn btn-default">Learn More</a> -->
                     </div>
                     <div class="panel-footer">
-                      <p>Date:<?= ($event['date']) ?></p>
-                      <p>Date:$<?= ($event['price']) ?></p>
+                      <p>Date:<?= ($event['start_date']) ?></p>
+                      <p>Time:$<?= ($event['start_time']) ?></p>
                       <a href="#" class="btn btn-default">Learn More</a>
                     </div>
                 </div>

@@ -2553,7 +2553,7 @@ output {
 }
 .form-control {
   display: block;
-  width: 500px;
+  /*width: 500px;*/
   height: 34px;
   padding: 6px 12px;
   font-size: 14px;
@@ -5466,7 +5466,7 @@ button.list-group-item-danger.active:focus {
 }
 .panel-body {
   padding: 15px;
-  height: 130px;
+  height: 100px;
 }
 .panel-heading {
   padding: 10px 15px;
@@ -5694,7 +5694,33 @@ button.list-group-item-danger.active:focus {
 }
 .panel-default {
   border-color: #ddd;
+  /*background-image: url("/Eventifier_page/images/Music.jpg");*/
 }
+
+.panel-image img.panel-image-preview {
+    width: 100%;
+	border-radius: 4px 4px 0px 0px;
+}
+
+.panel-heading ~ .panel-image img.panel-image-preview {
+	border-radius: 0px;
+}
+
+.panel-image ~ .panel-body, .panel-image.hide-panel-body ~ .panel-body {
+	overflow: hidden;
+}
+.panel-image ~ .panel-footer a {
+	padding: 0px 10px;
+	font-size: 1.3em;
+	color: rgb(100, 100, 100);
+}
+
+.panel-image.hide-panel-body ~ .panel-body {
+	height: 0px;
+	padding: 0px;
+}
+
+
 .panel-default > .panel-heading {
   color: #333;
   background-color: #f5f5f5;

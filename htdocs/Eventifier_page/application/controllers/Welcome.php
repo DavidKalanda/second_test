@@ -23,15 +23,17 @@ class Welcome extends CI_Controller {
 		$this->load->helper("form");
 		$this->load->helper('url');
 		$this->load->view('header');
-		$this->load->view('main_page');
+		// loads main page with events showing
+		$this->outputLocalEvent();
+		//$this->load->view('main_page');
 		$this->load->view('footer');
 	}
 
 	public function loadPages()
 	{
 		$this->load->view('header');
+		// loads the main page as well as some local events
 		$this->outputLocalEvent();
-		$this->load->view('main_page');
 		$this->load->view('footer');
 	}
 
@@ -94,7 +96,7 @@ class Welcome extends CI_Controller {
 		unset($_SESSION['first_name']);
 		$this->session->sess_destroy();
 		$this->load->view('header');
-		$this->load->view('main_page');
+		$this->outputLocalEvent();
 		$this->load->view('footer');
 	}
 
@@ -116,9 +118,8 @@ class Welcome extends CI_Controller {
 				'user_id'=>$user_id
 			);
 			$this->session->set_userdata($session_data);
-			//complete with redirect location homepage
+			//redirect to userspage
 			redirect('/userspage');
-			//$this->load->view('Welcome/userspage');
 			}
 			else {
 					$this->session->set_flashdata('error','Invalid username and password');
@@ -191,13 +192,12 @@ public function outputEvent()
 	$this->load->model('event_model');
 	$data['events'] = $this->event_model->all_events();
 	$this->load->view('userspage',$data);
-	$this->load->view('main_page',$data);
 }
 
 public function outputLocalEvent()
 {
 	$this->load->model('event_model');
-	$data['events'] = $this->event_model->all_events();
+	$data['events'] = $this->event_model->localEvent('Winnipeg');
 	$this->load->view('main_page',$data);
 }
 
@@ -209,15 +209,19 @@ public function create_event(){
 		$userData = array();
 		if($this->input->post('createSubmit')){
 				$this->form_validation->set_rules('title', 'title', 'required');
-				$this->form_validation->set_rules('date', 'date', 'required');
-				$this->form_validation->set_rules('time', 'time', 'required');
+				$this->form_validation->set_rules('start_date', 'start_date', 'required');
+				$this->form_validation->set_rules('start_time', 'start_time', 'required');
 				$this->form_validation->set_rules('content', 'content', 'required');
+				$this->form_validation->set_rules('address', 'address', 'required');
+				$this->form_validation->set_rules('price', 'price', 'required');
 
 				$userData = array(
 						'title' => $this->input->post('title'),
-						'date' => $this->input->post('date'),
-						'time' => $this->input->post('time'),
-						'content' => $this->input->post('content')
+						'start_date' => $this->input->post('start_date'),
+						'start_time' => $this->input->post('start_time'),
+						'content' => $this->input->post('content'),
+						'address' => $this->input->post('address'),
+						'price' => $this->input->post('price')
 				);
 
 				if($this->form_validation->run() == true){
