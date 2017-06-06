@@ -62,30 +62,38 @@
                 </h3>
             </div>
 
+            <!-- Event info -->
             <?php foreach($events as $event): ?>
-            <div class="col-md-4">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
+              <div class="col-xs-12 col-md-4">
+                  <div class="panel panel-default">
+                      <div class="panel-image">
+                        <div class="event_picture">
+                          <div class="event_price">
+                            <h6>$<?= ($event['price']) ?></h6>
+                          </div>
+                          <img src="/Eventifier_page/images/Music.jpg" class="panel-image-preview" />
+                        </div>
+                          <h4><?= ($event['title']) ?></h4>
+                          <p><?= ($event['start_date']) ?> - <?= ($event['start_time']) ?></p>
+                      </div>
 
-                        <h4><i class="fa fa-fw fa-check"></i><?= ($event['title']) ?></h4>
-                        <h6>$<?= ($event['price']) ?></h6>
-                    </div>
-                    <div class="panel-body">
-                      <?php if (strlen($event['content'])>200): ?>
-                        <p><?= substr($event['content'],0,200) ?>...</p>
-                      <?php else: ?>
-								        <?= $event['content'] ?>
-							       <?php endif ?>
-                        <!-- <a href="#" class="btn btn-default">Learn More</a> -->
-                    </div>
-                    <div class="panel-footer">
-                      <p>Date:<?= ($event['start_date']) ?></p>
-                      <p>Time:$<?= ($event['start_time']) ?></p>
-                      <a href="#" class="btn btn-default">Learn More</a>
-                    </div>
+                      <!-- <div class="panel-body">
+                        <?php if (strlen($event['content'])>200): ?>
+                          <p><?= substr($event['content'],0,200) ?>...</p>
+                        <?php else: ?>
+  								        <?= $event['content'] ?>
+  							       <?php endif ?>
+                           <a href="#" class="btn btn-default">Learn More</a>
+                      </div> -->
+                      <div class="panel-footer text-center">
+                          <a href="#download"><span class="glyphicon glyphicon-download"></span></a>
+                          <a href="#facebook"><span class="fa fa-facebook"></span></a>
+                          <a href="#twitter"><span class="fa fa-twitter"></span></a>
+                          <a href="#share"><span class="glyphicon glyphicon-share-alt"></span></a>
+                      </div>
+                  </div>
                 </div>
-            </div>
-          <?php endforeach ?>
+             <?php endforeach ?>
         </div>
         <!-- /.row -->
 

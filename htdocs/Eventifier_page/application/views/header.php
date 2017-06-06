@@ -60,11 +60,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <?php if (! isset($_SESSION['first_name'])): ?>
-                    <li>
+                    <!-- <li>
                         <a href="<?= base_url('login') ?>"><i class="fa fa-sign-in" aria-hidden="true"></i> Log in</a>
+                    </li> -->
+                    <li>
+                        <a data-target="#login" data-toggle="modal"><i class="fa fa-sign-in" aria-hidden="true"></i> Log in</a>
                     </li>
                     <li>
-                        <a href="<?= base_url('signup') ?>"><i class="fa fa-plus" aria-hidden="true"></i> Sign up</a>
+                        <a data-target="#signup" data-toggle="modal"><i class="fa fa-plus" aria-hidden="true"></i> Sign up</a>
                     </li>
                     <li>
                         <a href="<?= base_url('signup') ?>"><i class="fa fa-building-o" aria-hidden="true"></i> Subscribe your organization</a>
