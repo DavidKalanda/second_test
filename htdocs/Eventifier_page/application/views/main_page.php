@@ -35,6 +35,11 @@
 
             <!-- Event info -->
             <?php foreach($events as $event): ?>
+
+              <?php
+$date=date_create($event['start_date']);
+?>
+
               <div class="col-xs-12 col-md-4">
                   <div class="panel panel-default">
                       <div class="panel-image">
@@ -45,6 +50,7 @@
                           <img src="/Eventifier_page/images/Music.jpg" class="panel-image-preview" />
                         </div>
                           <h4><?= ($event['title']) ?></h4>
+                          <h4> <small><?php echo date_format($date,"\n l jS F Y") ?></small></h4>
                           <p><?= ($event['start_date']) ?> - <?= ($event['start_time']) ?></p>
                       </div>
 
