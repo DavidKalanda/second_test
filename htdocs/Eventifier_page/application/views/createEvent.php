@@ -3,51 +3,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 ?>
 
-  <!-- <div class="container">
-    <div class="well well-lg">
-      <div class="createEvent">
-        <h1>Create Event</h1>
-      <br></br>
-    <?php echo form_open('welcome/create_event'); ?>
-      <div class="form-group row">
-        <div class="col-10">
-          <label>Title</label>
-          <input type="text" value="" name="title">
-        </div>
-      </div>
-      <div class="form-group row">
-        <div class="col-10">
-          <label> Start Date</label>
-          <input type="date" value="" name="date">
-          <label class="col-2 col-form-label">Time</label>
-          <input type="time" name="time">
-        </div>
-      </div>
-      <div class="form-group row">
-        <label for="example-time-input" class="col-2 col-form-label">Time</label>
-        <div class="col-10">
-          <input class="form-control" type="time" value="13:45:00" name="time">
-        </div>
-      </div>
-      <div class="form-group row">
-        <label class="col-2 col-form-label">Price</label>
-        <div class="col-10">
-          <input class="form-control" type="price" value="$" name="price">
-        </div>
-      </div>
-        <div class="form-group row">
-          <label for="example-text-input" class="col-2 col-form-label">Content</label>
-          <div class="col-10">
-          <textarea class="form-control" type="text box" value="" name="content"></textarea>
-          </div>
-        </div>
-        <div class="form-group">
-            <input type="submit" name="createSubmit" class="btn-primary" value="Submit"/>
-        </div>
-    </form>
-  </div>
-</div>
-</div> -->
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+   <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+   <script type="text/javascript" src="js/bootstrap-filestyle.min.js"> </script>
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <div class="row">
     <div class="col-md-8 col-md-offset-1">
@@ -98,13 +57,29 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           </div>
 
           <!--Add image  -->
-          <div class="form-group">
+          <!-- <div class="form-group">
             <div class="col-sm-2">
               <label for="example-text-input" class="col-2 col-form-label">Image</label>
               <input type="text" name="image_link" placeholder="Image" class="form-control"><br>
               <button type="button" name="button" class="btn btn-defaul">Add image</button>
             </div>
+          </div> -->
+          <legend>Image upload</legend>
+          <div class="col-xs-4">
+        	   <div class="form-group">
+               <h4>Select files from your computer</h4>
+               <br>
+                <form action="" method="post" enctype="multipart/form-data" id="js-upload-form">
+                  <div class="form-inline">
+                    <div class="form-group">
+                      <input type="file" name="files[]" id="js-upload-files" multiple>
+                    </div>
+                    <!-- <button type="upload" class="btn btn-sm btn-primary" id="js-upload-submit">Upload files</button> -->
+                  </div>
+                </form>
+             </div>
           </div>
+
 
           <!-- Additional Info -->
           <legend>Additional Information</legend>

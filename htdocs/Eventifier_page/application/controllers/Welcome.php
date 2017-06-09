@@ -214,6 +214,7 @@ public function create_event(){
 				$this->form_validation->set_rules('content', 'content', 'required');
 				$this->form_validation->set_rules('address', 'address', 'required');
 				$this->form_validation->set_rules('price', 'price', 'required');
+				$this->form_validation->set_rules('event_image', 'event_image');
 
 				$userData = array(
 						'title' => $this->input->post('title'),
@@ -221,7 +222,8 @@ public function create_event(){
 						'start_time' => $this->input->post('start_time'),
 						'content' => $this->input->post('content'),
 						'address' => $this->input->post('address'),
-						'price' => $this->input->post('price')
+						'price' => $this->input->post('price'),
+						'event_image' => $this->input->post('event_image')
 				);
 
 				if($this->form_validation->run() == true){
@@ -237,6 +239,8 @@ public function create_event(){
 		//$data['title'] = $userData;
 		//load the view
 		redirect('/userspage');
-}
+
+	}
+
 
 }

@@ -37,8 +37,9 @@
             <?php foreach($events as $event): ?>
 
               <?php
-$date=date_create($event['start_date']);
-?>
+              $date=date_create($event['start_date']);
+              $time=date_create($event['start_time']);
+              ?>
 
               <div class="col-xs-12 col-md-4">
                   <div class="panel panel-default">
@@ -50,8 +51,8 @@ $date=date_create($event['start_date']);
                           <img src="/Eventifier_page/images/Music.jpg" class="panel-image-preview" />
                         </div>
                           <h4><?= ($event['title']) ?></h4>
-                          <h4> <small><?php echo date_format($date,"\n l jS F Y") ?></small></h4>
-                          <p><?= ($event['start_date']) ?> - <?= ($event['start_time']) ?></p>
+                          <h4> <small><?php echo date_format($date,"\n l jS F Y") ?> - <?php echo date_format($time, 'g:i A') ?></small></h4>
+                          <!-- <p><?= ($event['start_date']) ?> - <?= ($event['start_time']) ?></p> -->
                       </div>
 
                       <!-- <div class="panel-body">
