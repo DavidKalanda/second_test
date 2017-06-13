@@ -4,7 +4,7 @@
         <div class="carousel-inner">
             <div class="item active">
                 <div class="fill">
-                  <video src="videos/video05.mp4" autoplay loop width="100%"></video>
+                  <video src="videos/video06.mp4" autoplay loop width="100%"></video>
                 </div>
                 <div class="carousel-caption">
                   <h1>Want to have another Beautiful experience?</h1>
@@ -48,7 +48,7 @@
                           <div class="event_price">
                             <h6><b>$<?= ($event['price']) ?></b></h6>
                           </div>
-                          <img src="/Eventifier_page/images/Music.jpg" class="panel-image-preview" />
+                          <img src="uploads/<?= ($event['event_image']) ?>" class="panel-image-preview" />
                         </div>
                           <h4><?= ($event['title']) ?></h4>
                           <h4> <small><?php echo date_format($date,"\n l jS F Y") ?> - <?php echo date_format($time, 'g:i A') ?></small></h4>
@@ -125,7 +125,7 @@
 									</div>
                   <br><br>
                     <label>Username</label>
-                    <input type="text" name="first_name" value=""/>
+                    <input type="text" name="first_name" value="" autofocus/>
                     <br /><br />
                     <div class="">
                       <label>Password</label>
@@ -158,7 +158,7 @@
                     <br><br>
                     <?php echo form_open('Welcome/user_registration'); ?>
                         <div class="form-group">
-                            <input type="text" class="form-control" name="first_name" placeholder="Name" required="" value="<?php echo !empty($first_name['first_name'])?$first_name['first_name']:''; ?>">
+                            <input type="text" class="form-control" name="first_name" placeholder="Name" required="" value="<?php echo !empty($first_name['first_name'])?$first_name['first_name']:''; ?>" autofocus>
                           <?php echo form_error('first_name','<span class="help-block">','</span>'); ?>
                         </div>
                         <div class="form-group">

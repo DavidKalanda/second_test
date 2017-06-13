@@ -70,7 +70,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <a data-target="#signup" data-toggle="modal"><i class="fa fa-plus" aria-hidden="true"></i> Sign up</a>
                     </li>
                     <li>
-                        <a href="<?= base_url('signup') ?>"><i class="fa fa-building-o" aria-hidden="true"></i> Subscribe your organization</a>
+                        <a href="<?= base_url('register_your_organization') ?>"><i class="fa fa-building-o" aria-hidden="true"></i> Register your organization</a>
                     </li>
                     <?php endif ?>
                     <?php if (isset($_SESSION['first_name'])): ?>

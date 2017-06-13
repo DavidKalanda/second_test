@@ -9,7 +9,7 @@
     <br><br>
     <?php echo form_open('Welcome/user_registration'); ?>
         <div class="form-group">
-            <input type="text" class="form-control" name="first_name" placeholder="Name" required="" value="<?php echo !empty($first_name['first_name'])?$first_name['first_name']:''; ?>">
+            <input autofoucus type="text" class="form-control" name="first_name" placeholder="Name" required="" value="<?php echo !empty($first_name['first_name'])?$first_name['first_name']:''; ?>">
           <?php echo form_error('first_name','<span class="help-block">','</span>'); ?>
         </div>
         <div class="form-group">

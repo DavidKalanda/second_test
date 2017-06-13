@@ -18,6 +18,7 @@ class Welcome extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
+
 	public function index()
 	{
 		$this->load->helper("form");
@@ -66,6 +67,18 @@ class Welcome extends CI_Controller {
 		$this->load->view('signup');
 		$this->load->view('footer');
 	}
+	// registrater your organization
+	public function register_your_organization()
+  {
+		$this->load->view('header');
+	 	$this->load->view('register_your_organization');
+		$this->load->view('footer');
+  }
+
+	public function upload_form()
+  {
+	 $this->load->view('upload_form');
+  }
 
 	public function userspage()
 	{
@@ -182,8 +195,9 @@ public function user_registration(){
 
 public function createEvent()
 {
+	$error="";
 	$this->load->view('header');
-	$this->load->view('createEvent');
+	$this->load->view('createEvent',$error);
 	$this->load->view('footer');
 }
 
@@ -207,7 +221,7 @@ public function outputLocalEvent()
 public function create_event(){
 		$data = array();
 		$userData = array();
-		if($this->input->post('createSubmit')){
+		if($this->input->post('upload')){
 				$this->form_validation->set_rules('title', 'title', 'required');
 				$this->form_validation->set_rules('start_date', 'start_date', 'required');
 				$this->form_validation->set_rules('start_time', 'start_time', 'required');
@@ -223,7 +237,7 @@ public function create_event(){
 						'content' => $this->input->post('content'),
 						'address' => $this->input->post('address'),
 						'price' => $this->input->post('price'),
-						'event_image' => $this->input->post('event_image')
+						'event_image' => $_FILES["event_image"]["name"]
 				);
 
 				if($this->form_validation->run() == true){
@@ -231,16 +245,43 @@ public function create_event(){
 						if($insert){
 								$this->session->set_userdata('success_msg', 'Event was created successfully.');
 								$this->load->view('userspage');
+								$this->do_upload();
 						}else{
 								$data['error_msg'] = 'Some problems occured, please try again.';
 						}
 				}
+
+
+
 		}
 		//$data['title'] = $userData;
 		//load the view
 		redirect('/userspage');
-
 	}
+
+	public function do_upload()
+  {
+          $config['upload_path']          = './uploads/';
+          $config['allowed_types']        = 'gif|jpg|png';
+          $config['max_size']             = 1000000000;
+          $config['max_width']            = 10000;
+          $config['max_height']           = 10000;
+
+          $this->load->library('upload', $config);
+
+          if ( ! $this->upload->do_upload('event_image'))
+          {
+                  $error = array('error' => $this->upload->display_errors());
+
+                  $this->load->view('upload_form', $error);
+          }
+          else
+          {
+                  $data = array('upload_data' => $this->upload->data());
+
+                  $this->load->view('userspage', $data);
+          }
+  }
 
 
 }

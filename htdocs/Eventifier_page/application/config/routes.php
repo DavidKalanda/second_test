@@ -59,5 +59,7 @@ $route['contact']= 'Welcome/contact';
 $route['userspage']= 'Welcome/userspage';
 $route['logout']= 'Welcome/logout';
 $route['createEvent']= 'Welcome/createEvent';
+$route['upload_form']= 'Welcome/upload_form';
+$route['register_your_organization']= 'Welcome/register_your_organization';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

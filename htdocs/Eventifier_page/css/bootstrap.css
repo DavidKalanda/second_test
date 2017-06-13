@@ -5697,8 +5697,10 @@ button.list-group-item-danger.active:focus {
   border-color: #ddd;
 }
 
+/*Event image size*/
 .panel-image img.panel-image-preview {
-    width: 100%;
+    width: 358px;
+    height: 224px;
 	border-radius: 4px 4px 0px 0px;
 }
 

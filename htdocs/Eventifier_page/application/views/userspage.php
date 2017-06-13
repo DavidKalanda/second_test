@@ -71,7 +71,7 @@
                           <div class="event_price">
                             <h6>$<?= ($event['price']) ?></h6>
                           </div>
-                          <img src="/Eventifier_page/images/Music.jpg" class="panel-image-preview" />
+                          <img src="uploads/<?= ($event['event_image']) ?>" class="panel-image-preview" />
                         </div>
                           <h4><?= ($event['title']) ?></h4>
                           <p><?= ($event['start_date']) ?> - <?= ($event['start_time']) ?></p>

@@ -10,7 +10,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <div class="row">
     <div class="col-md-8 col-md-offset-1">
-      <?php echo form_open('welcome/create_event'); ?>
+      <?php echo form_open_multipart('welcome/create_event'); ?>
       <div class="form-horizontal" role="form">
       <br><br><br></br>
         <fieldset>
@@ -21,30 +21,41 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <!-- Text input-->
           <div class="form-group">
             <div class="col-sm-2">
-              <input type="text" name="title" placeholder="Title" class="form-control">
+              <input type="text" name="title" placeholder="Title" class="form-control" required="required" autofocus>
             </div>
           </div>
           <div class="form-group">
             <div class="col-sm-4">
               <span class="glyphicon glyphicon-calendar"></span>
               <label for="example-text-input" class="col-2 col-form-label">Start</label>
-              <input type="date" name="start_date" placeholder="Start Date " class="form-control">
+              <?php $min_date = date("Y-m-d");?>
+              <input id="start_date" type="date" name="start_date" placeholder="Start Date " class="form-control" min="<?= $min_date ;?>" required="required" onchange="startDateChange()">
               <br>
-              <input class="form-control" type="time" value="13:45" name="start_time">
+              <input class="form-control" type="time" value="13:45" name="start_time" required="required">
             </div>
             <div class="col-sm-4">
               <span class="glyphicon glyphicon-calendar"></span>
               <label for="example-text-input" class="col-2 col-form-label">End</label>
-              <input type="date" name="end_date" placeholder="Start Date " class="form-control">
+              <input id="end_date" type="date" name="end_date" placeholder="Start Date " class="form-control" min="<?= $min_date ;?>" >
               <br>
               <input class="form-control" type="time" value="13:45" name="end_time">
             </div>
           </div>
+          <script type="text/javascript">
+            function startDateChange()
+            {
+              var start_date = document.getElementById('start_date');
+              // var end_date = document.getElementById('end_date');
+
+              var min_End_Date = document.getElementById("end_date").setAttribute("min", start_date.value);
+              return min_End_Date;
+            }
+          </script>
 
           <!-- Add Google map-->
           <div class="form-group">
             <div class="col-sm-4">
-              <input type="text" name="address" placeholder="Vanue" class="form-control">
+              <input type="text" name="address" placeholder="Venue" class="form-control" required="required">
               <a href="#">Add using Google Maps</a>
             </div>
           </div>
@@ -52,31 +63,27 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <!-- Text input Content-->
           <div class="form-group row">
             <div class="col-lg-10">
-            <textarea rows="6" cols="50" class="form-control" type="text box" name="content" placeholder="Event Description"></textarea>
+            <textarea rows="6" cols="50" class="form-control" type="text box" name="content" placeholder="Event Description" required="required"></textarea>
             </div>
           </div>
 
           <!--Add image  -->
-          <!-- <div class="form-group">
-            <div class="col-sm-2">
-              <label for="example-text-input" class="col-2 col-form-label">Image</label>
-              <input type="text" name="image_link" placeholder="Image" class="form-control"><br>
-              <button type="button" name="button" class="btn btn-defaul">Add image</button>
-            </div>
-          </div> -->
           <legend>Image upload</legend>
           <div class="col-xs-4">
         	   <div class="form-group">
                <h4>Select files from your computer</h4>
                <br>
-                <form action="" method="post" enctype="multipart/form-data" id="js-upload-form">
+                <!-- <form action="" method="post" enctype="multipart/form-data" id="js-upload-form"> -->
                   <div class="form-inline">
                     <div class="form-group">
-                      <input type="file" name="files[]" id="js-upload-files" multiple>
+                      <!-- <input type="file" name="event_image" id="js-upload-files" multiple> -->
+                      <?php $error=""; ?>
+                      <?php echo $error;?>
+                      <input type="file" name="event_image" size="20" />
                     </div>
                     <!-- <button type="upload" class="btn btn-sm btn-primary" id="js-upload-submit">Upload files</button> -->
                   </div>
-                </form>
+                <!-- </form> -->
              </div>
           </div>
 
@@ -93,7 +100,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               <input type="text" name="tickets_available" placeholder="Tickets Available" class="form-control">
             </div>
             <div class="col-sm-2">
-              <input type="text" name="price" placeholder="Price" class="form-control" value="$">
+              <input type="text" name="price" placeholder="Price" class="form-control" value="" required="required">
             </div>
           </div>
           <div class="form-group">
@@ -120,7 +127,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <div class="col-sm-5 col-sm-offset-1">
               <div class="pull-right">
                 <button type="submit" class="btn btn-default">Cancel</button>
-                <button type="submit" class="btn btn-primary" name="createSubmit" value="Submit">Save</button>
+                <button type="submit" class="btn btn-primary" name="upload" value="upload">Save</button>
               </div>
             </div>
           </div>

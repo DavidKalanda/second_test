@@ -10,7 +10,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       <br /><br /><br />
     <?= form_open('welcome/login_validation'); ?>
       <label>Username</label>
-      <input type="text" name="first_name" value=""/>
+      <input type="text" name="first_name" value="" autofocus/>
       <br /><br />
       <div class="">
         <label>Password</label>
