@@ -24,9 +24,8 @@ class Welcome extends CI_Controller {
 		$this->load->helper("form");
 		$this->load->helper('url');
 		$this->load->view('header');
-		// loads main page with events showing
+		// loads main page with Local events showing
 		$this->outputLocalEvent();
-		//$this->load->view('main_page');
 		$this->load->view('footer');
 	}
 
@@ -80,6 +79,8 @@ class Welcome extends CI_Controller {
 	 $this->load->view('upload_form');
   }
 
+
+	// loads the users page after loging in
 	public function userspage()
 	{
 		if (isset($_SESSION['first_name'])) {
@@ -87,7 +88,6 @@ class Welcome extends CI_Controller {
 			$data['users'] = $this->login_model->all_users();
 			$this->load->view('header',$data);
 			$this->outputEvent();
-			//$this->load->view('userspage');
 			$this->load->view('footer');
 		}else {
 			$this->load->view('header');
@@ -208,6 +208,7 @@ public function outputEvent()
 	$this->load->view('userspage',$data);
 }
 
+//
 public function outputLocalEvent()
 {
 	$this->load->model('event_model');

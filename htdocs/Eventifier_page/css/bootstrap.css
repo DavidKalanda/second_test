@@ -6819,7 +6819,8 @@ button.close {
   text-align: center;
 }
 
+/* Hover property of the event */
 .panel-default:hover{
-  box-shadow:1px 1px 2px 2px #556bf3;
+  box-shadow:0.5px 0.5px 0.5px 0.5px #556bf3;
 }
 /*# sourceMappingURL=bootstrap.css.map */

@@ -80,8 +80,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <li>
                         <a href="<?= base_url('#') ?>"><i class="fa fa-bell" aria-hidden="true"></i></i> Notification</a>
                     </li>
-                    <?php endif ?>
-                    <?php if (isset($_SESSION['first_name'])): ?>
+                    <!-- <?php endif ?>
+                    <?php if (isset($_SESSION['first_name'])): ?> -->
                     <li>
                         <a href="<?= base_url('logout') ?>"><i class="fa fa-sign-out" aria-hidden="true"></i> Log out</a>
                     </li>

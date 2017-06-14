@@ -40,7 +40,6 @@
         <!--/.container-->
     </div>
     <!--/.footer-->
-
     <div class="footer-bottom">
         <div class="container">
             <p class="pull-left"> Copyright © Footer 2017. All right reserved. </p>

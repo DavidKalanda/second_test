@@ -58,6 +58,7 @@
                         <li><a href="#">All Events</a></li>
                         <li><a href="#">Your Events</a></li>
                       </ul>
+                      <a class="btn btn-lg btn-default btn-block" href="<?= base_url('createEvent') ?>">Create Event</a>
                     </div>
                 </h3>
             </div>
@@ -136,7 +137,7 @@
         <!-- /.row -->
 
         <!-- Features Section -->
-        <div class="row">
+        <!-- <div class="row">
             <div class="col-lg-12">
                 <h2 class="page-header">Modern Business Features</h2>
             </div>
@@ -156,7 +157,7 @@
             <div class="col-md-6">
                 <img class="img-responsive" src="http://placehold.it/700x450" alt="">
             </div>
-        </div>
+        </div> -->
         <!-- /.row -->
 
         <hr>
@@ -175,14 +176,6 @@
 
         <hr>
 
-        <!-- Footer -->
-        <footer>
-            <div class="row">
-                <div class="col-lg-12">
-                    <p>Copyright &copy; Your Website 2014</p>
-                </div>
-            </div>
-        </footer>
 
     </div>
     <!-- /.container -->
