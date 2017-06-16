@@ -74,12 +74,6 @@ class Welcome extends CI_Controller {
 		$this->load->view('footer');
   }
 
-	public function upload_form()
-  {
-	 $this->load->view('upload_form');
-  }
-
-
 	// loads the users page after loging in
 	public function userspage()
 	{
@@ -113,85 +107,7 @@ class Welcome extends CI_Controller {
 		$this->load->view('footer');
 	}
 
-	// Validates the login information
-	public function login_validation(){
-	$this->load->library('form_validation');
-	$this->form_validation->set_rules('first_name','first_name','required');
-	$this->form_validation->set_rules('password','password','required');
-	if ($this->form_validation->run())
-	{
-		$first_name = $this->input->post('first_name');
-		$password = $this->input->post('password');
-		// model function
-		$this->load->model('login_model');
-		if ($this->login_model->can_login($first_name,$password)) {
-			/// stores user in session
-			$session_data = array(
-				'first_name'=> $first_name,
-				'user_id'=>$user_id
-			);
-			$this->session->set_userdata($session_data);
-			//redirect to userspage
-			redirect('/userspage');
-			}
-			else {
-					$this->session->set_flashdata('error','Invalid username and password');
-					//complete with redirect to login page
-					$this->load->view('/login');
-					//redirect('http://localhost/Test/user/welcome_message');
-						}
-		}
-		else {
-		//false
-		$this->login();
-		}
-}
 
-/*
-	 * User registration
-	 */
-public function user_registration(){
-		$data = array();
-		$userData = array();
-		if($this->input->post('regisSubmit')){
-				$this->form_validation->set_rules('first_name', 'first_name', 'required');
-				$this->form_validation->set_rules('last_name', 'last_name', 'required');
-				$this->form_validation->set_rules('email_address', 'email_address', 'required|valid_email');//|callback_email_check
-				$this->form_validation->set_rules('password', 'password', 'required');
-				$this->form_validation->set_rules('conf_password', 'confirm password', 'required|matches[password]');
-				echo "TEST ";
-				// to hash the password use md5($this->input->post('password'))
-				$userData = array(
-						'first_name' => strip_tags($this->input->post('first_name')),
-						'last_name' => strip_tags($this->input->post('last_name')),
-						'email_address' => strip_tags($this->input->post('email_address')),
-						'password' => $this->input->post('password'),
-						//'gender' => $this->input->post('gender'),
-						//'phone' => strip_tags($this->input->post('phone'))
-				);
-				echo "TEST2: ".$userData['first_name'];
-				if($this->form_validation->run() == true){
-						$insert = $this->db->insert('users',$userData);
-						echo "TEST3: ".$insert;
-						if($insert){
-								$this->session->set_userdata('success_msg', 'Your registration was successfully. Please login to your account.');
-								redirect('/login');
-						}else{
-								$data['error_msg'] = 'Some problems occured, please try again.';
-						}
-				}
-				else {
-					$data['first_name'] = $userData;
-					redirect('/signup');
-					//$this->load->view('/signup', $data);
-				}
-		}
-		else {
-			$data['first_name'] = $userData;
-			//load the view
-			$this->load->view('login', $data);
-		}
-}
 
 public function createEvent()
 {
@@ -201,6 +117,16 @@ public function createEvent()
 	$this->load->view('footer');
 }
 
+// Loads the event that was clicked
+public function event_view($id)
+{
+	$this->load->view('header');
+	$this->load->model('event_model');
+	$data['event'] = $this->event_model->currentEvent($id);
+	$this->load->view('event_view',$data);
+}
+
+// Loads the users page with all the events
 public function outputEvent()
 {
 	$this->load->model('event_model');
@@ -208,7 +134,7 @@ public function outputEvent()
 	$this->load->view('userspage',$data);
 }
 
-//
+//Outputs homepage with local events
 public function outputLocalEvent()
 {
 	$this->load->model('event_model');
@@ -252,8 +178,6 @@ public function create_event(){
 						}
 				}
 
-
-
 		}
 		//$data['title'] = $userData;
 		//load the view
@@ -283,6 +207,86 @@ public function create_event(){
                   $this->load->view('userspage', $data);
           }
   }
+
+	/*
+		 * User registration
+		 */
+	public function user_registration(){
+			$data = array();
+			$userData = array();
+			if($this->input->post('regisSubmit')){
+					$this->form_validation->set_rules('first_name', 'first_name', 'required');
+					$this->form_validation->set_rules('last_name', 'last_name', 'required');
+					$this->form_validation->set_rules('email_address', 'email_address', 'required|valid_email');//|callback_email_check
+					$this->form_validation->set_rules('password', 'password', 'required');
+					$this->form_validation->set_rules('conf_password', 'confirm password', 'required|matches[password]');
+					echo "TEST ";
+					// to hash the password use md5($this->input->post('password'))
+					$userData = array(
+							'first_name' => strip_tags($this->input->post('first_name')),
+							'last_name' => strip_tags($this->input->post('last_name')),
+							'email_address' => strip_tags($this->input->post('email_address')),
+							'password' => $this->input->post('password'),
+							//'gender' => $this->input->post('gender'),
+							//'phone' => strip_tags($this->input->post('phone'))
+					);
+					echo "TEST2: ".$userData['first_name'];
+					if($this->form_validation->run() == true){
+							$insert = $this->db->insert('users',$userData);
+							echo "TEST3: ".$insert;
+							if($insert){
+									$this->session->set_userdata('success_msg', 'Your registration was successfully. Please login to your account.');
+									redirect('/login');
+							}else{
+									$data['error_msg'] = 'Some problems occured, please try again.';
+							}
+					}
+					else {
+						$data['first_name'] = $userData;
+						redirect('/signup');
+						//$this->load->view('/signup', $data);
+					}
+			}
+			else {
+				$data['first_name'] = $userData;
+				//load the view
+				$this->load->view('login', $data);
+			}
+	}
+
+	// Validates the login information
+	public function login_validation(){
+	$this->load->library('form_validation');
+	$this->form_validation->set_rules('first_name','first_name','required');
+	$this->form_validation->set_rules('password','password','required');
+	if ($this->form_validation->run())
+	{
+		$first_name = $this->input->post('first_name');
+		$password = $this->input->post('password');
+		// model function
+		$this->load->model('login_model');
+		if ($this->login_model->can_login($first_name,$password)) {
+			/// stores user in session
+			$session_data = array(
+				'first_name'=> $first_name,
+				'user_id'=>$user_id
+			);
+			$this->session->set_userdata($session_data);
+			//redirect to userspage
+			redirect('/userspage');
+			}
+			else {
+					$this->session->set_flashdata('error','Invalid username and password');
+					//complete with redirect to login page
+					$this->load->view('/login');
+					//redirect('http://localhost/Test/user/welcome_message');
+						}
+		}
+		else {
+		//false
+		$this->login();
+		}
+}
 
 
 }
