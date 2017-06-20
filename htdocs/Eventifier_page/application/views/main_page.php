@@ -4,10 +4,10 @@
         <div class="carousel-inner">
             <div class="item active">
                 <div class="fill">
-                  <video src="videos/video06.mp4" autoplay loop width="100%"></video>
+                  <video width="100%" src="videos/video06.mp4" autoplay loop ></video>
                 </div>
                 <div class="carousel-caption">
-                  <h1>Want to have another Beautiful experience?</h1>
+                  <h1>Want to Create another Beautiful experience?</h1>
                   <h2>Because every Event counts</h2>
                     <!-- <button type="button" class="btn btn-default btn-lg" href="<?= base_url('createEvent') ?>">
                       <a>Create Event</a>

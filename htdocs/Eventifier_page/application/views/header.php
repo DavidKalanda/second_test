@@ -14,7 +14,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
     <title>Eventifier</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <!-- Bootstrap Core CSS -->
     <link href="<?php echo base_url();?>/css/bootstrap.css" rel="stylesheet">
@@ -53,7 +53,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                   <a class="navbar-brand" href="<?= base_url('userspage') ?>">
                 <?php endif; ?>
 
-                <img src="images/logo_3.png" style="width:230px;height:60px; margin-left:-70px; margin-top:-10px;">
+                <img src="<?= base_url('') ?>images/logo_3.png" style="width:230px;height:60px; margin-left:-70px; margin-top:-10px;">
                 </a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -86,7 +86,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <a href="<?= base_url('logout') ?>"><i class="fa fa-sign-out" aria-hidden="true"></i> Log out</a>
                     </li>
                     <li>
-                      <a href="#"><i class="fa fa-user" aria-hidden="true"></i> <?=$_SESSION['first_name'] ?></a>
+                      <a href="<?= base_url('profile') ?>"><i class="fa fa-user" aria-hidden="true"></i> <?=$_SESSION['first_name'] ?></a>
                     </li>
                     <?php endif ?>
                     <!-- <li class="dropdown">
@@ -243,4 +243,3 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </div><!-- /.modal-content -->
         </div><!-- div class="modal-dialog -->
     </div>
-    

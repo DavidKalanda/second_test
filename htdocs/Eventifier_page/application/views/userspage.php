@@ -1,48 +1,48 @@
 
 
     <!-- Header Carousel -->
-    <header id="myCarousel" class="carousel slide">
+    <!-- <header id="myCarousel" class="carousel slide"> -->
         <!-- Indicators -->
-        <ol class="carousel-indicators">
+        <!-- <ol class="carousel-indicators">
             <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
             <li data-target="#myCarousel" data-slide-to="1"></li>
             <li data-target="#myCarousel" data-slide-to="2"></li>
-        </ol>
+        </ol> -->
 
         <!-- Wrapper for Slides -->
-        <div class="carousel-inner">
-            <div class="item active">
+        <!-- <div class="carousel-inner">
+            <div class="item active"> -->
                 <!-- Set the first background image using inline CSS below. -->
-                <div class="fill" style="background-image:url('http://placehold.it/1900x1080&text=Slide One');"></div>
+                <!-- <div class="fill" style="background-image:url('http://placehold.it/1900x1080&text=Slide One');"></div>
                 <div class="carousel-caption">
                     <h2>Caption 1</h2>
                 </div>
             </div>
-            <div class="item">
+            <div class="item"> -->
                 <!-- Set the second background image using inline CSS below. -->
-                <div class="fill" style="background-image:url('http://placehold.it/1900x1080&text=Slide Two');"></div>
+                <!-- <div class="fill" style="background-image:url('http://placehold.it/1900x1080&text=Slide Two');"></div>
                 <div class="carousel-caption">
                     <h2>Caption 2</h2>
                 </div>
             </div>
-            <div class="item">
+            <div class="item"> -->
                 <!-- Set the third background image using inline CSS below. -->
-                <div class="fill" style="background-image:url('http://placehold.it/1900x1080&text=Slide Three');"></div>
+                <!-- <div class="fill" style="background-image:url('http://placehold.it/1900x1080&text=Slide Three');"></div>
                 <div class="carousel-caption">
                     <h2>Caption 3</h2>
                 </div>
             </div>
-        </div>
+        </div> -->
 
         <!-- Controls -->
-        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+        <!-- <a class="left carousel-control" href="#myCarousel" data-slide="prev">
             <span class="icon-prev"></span>
         </a>
         <a class="right carousel-control" href="#myCarousel" data-slide="next">
             <span class="icon-next"></span>
         </a>
 
-    </header>
+    </header> -->
 
     <!-- Page Content -->
     <div class="container">
@@ -65,18 +65,27 @@
 
             <!-- Event info -->
             <?php foreach($events as $event): ?>
+
+              <!-- handles the dates on the celandar -->
+              <?php
+              $date=date_create($event['start_date']);
+              $time=date_create($event['start_time']);
+              ?>
+
               <div class="col-xs-12 col-md-4">
                   <div class="panel panel-default">
+                    <a style= "text-decoration:none; color:black" href="<?= base_url('event') ?>/<?= ($event['event_id']) ?>">
                       <div class="panel-image">
                         <div class="event_picture">
                           <div class="event_price">
-                            <h6>$<?= ($event['price']) ?></h6>
+                            <h6><b>$<?= ($event['price']) ?></b></h6>
                           </div>
                           <img src="uploads/<?= ($event['event_image']) ?>" class="panel-image-preview" />
                         </div>
                           <h4><?= ($event['title']) ?></h4>
-                          <p><?= ($event['start_date']) ?> - <?= ($event['start_time']) ?></p>
+                          <h4> <small><?php echo date_format($date,"\n l jS F Y") ?> - <?php echo date_format($time, 'g:i A') ?></small></h4>
                       </div>
+                    </a>
 
                       <!-- <div class="panel-body">
                         <?php if (strlen($event['content'])>200): ?>
@@ -90,7 +99,7 @@
                           <a href="#download"><span class="glyphicon glyphicon-download"></span></a>
                           <a href="#facebook"><span class="fa fa-facebook"></span></a>
                           <a href="#twitter"><span class="fa fa-twitter"></span></a>
-                          <a href="#share"><span class="glyphicon glyphicon-share-alt"></span></a>
+                          <a href="#"><span class="glyphicon glyphicon-share-alt"></span></a>
                       </div>
                   </div>
                 </div>

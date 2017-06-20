@@ -29,6 +29,7 @@ class Welcome extends CI_Controller {
 		$this->load->view('footer');
 	}
 
+	// Loads the view for the welcome page with all the local events
 	public function loadPages()
 	{
 		$this->load->view('header');
@@ -74,6 +75,13 @@ class Welcome extends CI_Controller {
 		$this->load->view('footer');
   }
 
+	public function user_profile()
+	{
+		$this->load->view('header');
+	 	$this->load->view('user_profile');
+		$this->load->view('footer');
+	}
+
 	// loads the users page after loging in
 	public function userspage()
 	{
@@ -98,6 +106,7 @@ class Welcome extends CI_Controller {
 		$this->load->view('footer');
 	}
 
+	// Ends the session and loads the home page
 	public function logout()
 	{
 		unset($_SESSION['first_name']);
@@ -109,81 +118,83 @@ class Welcome extends CI_Controller {
 
 
 
-public function createEvent()
-{
-	$error="";
-	$this->load->view('header');
-	$this->load->view('createEvent',$error);
-	$this->load->view('footer');
-}
+	public function createEvent()
+	{
+		$error="";
+		$this->load->view('header');
+		$this->load->view('createEvent',$error);
+		$this->load->view('footer');
+	}
 
-// Loads the event that was clicked
-public function event_view($id)
-{
-	$this->load->view('header');
-	$this->load->model('event_model');
-	$data['event'] = $this->event_model->currentEvent($id);
-	$this->load->view('event_view',$data);
-}
+	// Loads the event that was clicked
+	public function event_view($id)
+	{
+		$this->load->view('header');
+		$this->load->model('event_model');
+		$data['event'] = $this->event_model->currentEvent($id);
+		$this->load->view('event_view',$data);
+	}
 
-// Loads the users page with all the events
-public function outputEvent()
-{
-	$this->load->model('event_model');
-	$data['events'] = $this->event_model->all_events();
-	$this->load->view('userspage',$data);
-}
+	// Loads the users page with all the events
+	public function outputEvent()
+	{
+		$this->load->model('event_model');
+		$data['events'] = $this->event_model->all_events();
+		$this->load->view('userspage',$data);
+	}
 
-//Outputs homepage with local events
-public function outputLocalEvent()
-{
-	$this->load->model('event_model');
-	$data['events'] = $this->event_model->localEvent('Winnipeg');
-	$this->load->view('main_page',$data);
-}
+	//Outputs homepage with local events
+	public function outputLocalEvent()
+	{
+		$this->load->model('event_model');
+		$data['events'] = $this->event_model->localEvent('Winnipeg');
+		$this->load->view('main_page',$data);
+	}
 
-/*
-	 * creates event in database
-	 */
-public function create_event(){
-		$data = array();
-		$userData = array();
-		if($this->input->post('upload')){
-				$this->form_validation->set_rules('title', 'title', 'required');
-				$this->form_validation->set_rules('start_date', 'start_date', 'required');
-				$this->form_validation->set_rules('start_time', 'start_time', 'required');
-				$this->form_validation->set_rules('content', 'content', 'required');
-				$this->form_validation->set_rules('address', 'address', 'required');
-				$this->form_validation->set_rules('price', 'price', 'required');
-				$this->form_validation->set_rules('event_image', 'event_image');
+	/*
+ 	* creates event in database
+ 	*/
+ 	public function create_event(){
+	$data = array();
+	$userData = array();
+	if($this->input->post('upload')){
+			$this->form_validation->set_rules('title', 'title', 'required');
+			$this->form_validation->set_rules('start_date', 'start_date', 'required');
+			$this->form_validation->set_rules('start_time', 'start_time', 'required');
+			$this->form_validation->set_rules('content', 'content', 'required');
+			$this->form_validation->set_rules('address', 'address', 'required');
+			$this->form_validation->set_rules('price', 'price', 'required');
+			$this->form_validation->set_rules('event_image', 'event_image');
 
-				$userData = array(
-						'title' => $this->input->post('title'),
-						'start_date' => $this->input->post('start_date'),
-						'start_time' => $this->input->post('start_time'),
-						'content' => $this->input->post('content'),
-						'address' => $this->input->post('address'),
-						'price' => $this->input->post('price'),
-						'event_image' => $_FILES["event_image"]["name"]
-				);
+			$userData = array(
+					'title' => $this->input->post('title'),
+					'start_date' => $this->input->post('start_date'),
+					'start_time' => $this->input->post('start_time'),
+					'content' => $this->input->post('content'),
+					'address' => $this->input->post('address'),
+					'price' => $this->input->post('price'),
+					'event_image' => $_FILES["event_image"]["name"]
+			);
 
-				if($this->form_validation->run() == true){
-						$insert = $this->db->insert('events',$userData);
-						if($insert){
-								$this->session->set_userdata('success_msg', 'Event was created successfully.');
-								$this->load->view('userspage');
-								$this->do_upload();
-						}else{
-								$data['error_msg'] = 'Some problems occured, please try again.';
-						}
-				}
+			if($this->form_validation->run() == true){
+					$insert = $this->db->insert('events',$userData);
+					if($insert){
+							$this->session->set_userdata('success_msg', 'Event was created successfully.');
+							$this->load->view('userspage');
+							$this->do_upload();
+					}else{
+							$data['error_msg'] = 'Some problems occured, please try again.';
+					}
+			}
 
-		}
+	}
 		//$data['title'] = $userData;
 		//load the view
 		redirect('/userspage');
 	}
 
+	// Uploads the image that the user adds to the event,
+	//to the uploads folder
 	public function do_upload()
   {
           $config['upload_path']          = './uploads/';
@@ -210,6 +221,7 @@ public function create_event(){
 
 	/*
 		 * User registration
+		 *Adds a user into the database
 		 */
 	public function user_registration(){
 			$data = array();
@@ -230,10 +242,8 @@ public function create_event(){
 							//'gender' => $this->input->post('gender'),
 							//'phone' => strip_tags($this->input->post('phone'))
 					);
-					echo "TEST2: ".$userData['first_name'];
 					if($this->form_validation->run() == true){
 							$insert = $this->db->insert('users',$userData);
-							echo "TEST3: ".$insert;
 							if($insert){
 									$this->session->set_userdata('success_msg', 'Your registration was successfully. Please login to your account.');
 									redirect('/login');
@@ -279,7 +289,7 @@ public function create_event(){
 					$this->session->set_flashdata('error','Invalid username and password');
 					//complete with redirect to login page
 					$this->load->view('/login');
-					//redirect('http://localhost/Test/user/welcome_message');
+
 						}
 		}
 		else {
