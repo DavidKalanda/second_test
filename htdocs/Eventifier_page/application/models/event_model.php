@@ -21,7 +21,7 @@ class event_model extends CI_Model{
   public function localEvent($address)
   {
     $this->db->where('address', $address);
-    $query = $this->db->get('events');
+    $query = $this->db->get('events',6,1);
     return $query->result_array();
   }
 }

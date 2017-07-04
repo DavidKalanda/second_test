@@ -1,31 +1,41 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-
 ?>
-  <div class="container">
-    <div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
-      <br /><br /><br />
-    <div class="well well-lg">
-      <h1><b>Login</b></h1>
-      <br /><br /><br />
-    <?= form_open('welcome/login_validation'); ?>
-      <label>Username</label>
-      <input type="text" name="first_name" value="" autofocus/>
-      <br /><br />
-      <div class="">
-        <label>Password</label>
-        <input type="password" name="password" value=""/>
-      </div>
-      <br /><br />
-      <div class="">
-        <input type="submit" name="insert" value="Login">
-        <?php echo $this->session->flashdata("error"); ?>
-      </div>
-      <br /><br />
-    </form>
-  </div>
-  </div>
-  </div>
+<!DOCTYPE html>
+<html>
 
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventifier</title>
+    <!-- <link rel="stylesheet" href="<?php echo base_url();?>/login_assets/bootstrap/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="<?php echo base_url();?>/login_assets/fonts/ionicons.min.css">
+    <link rel="stylesheet" href="<?php echo base_url();?>/login_assets/css/Login-Form-Clean.css">
+    <link rel="stylesheet" href="<?php echo base_url();?>/login_assets/css/styles.css">
+</head>
+
+<body>
+    <div class="login-clean">
+        <?= form_open('welcome/login_validation'); ?>
+            <h2 class="sr-only">Login Form</h2>
+            <div class="outter">
+              <img src="<?= base_url('') ?>images/logo4.png" alt="" class="image-circle">
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="email" name="email_address" placeholder="Email">
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="password" name="password" placeholder="Password">
+            </div>
+            <div class="form-group">
+              <div> <?= $error_msg?></div>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary btn-block" type="submit" style="background-color:rgb(229,28,113);">Log In</button>
+            </div><a href="#" class="forgot">Forgot your email or password?</a></form>
+    </div>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
 </body>
+
 </html>

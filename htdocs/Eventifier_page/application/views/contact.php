@@ -1,126 +1,199 @@
+<link href="<?php echo base_url();?>/css/homepage.css" rel="stylesheet">
+<script src="<?php echo base_url();?>/js/homepage.js" type="text/javascript">
 
+</script>
 
-    <!-- Page Content -->
-    <div class="container">
-
-        <!-- Page Heading/Breadcrumbs -->
-        <div class="row">
-            <div class="col-lg-12">
-                <h1 class="page-header">Contact
-                    <small>Subheading</small>
-                </h1>
-                <ol class="breadcrumb">
-                    <li><a href="index.html">Home</a>
-                    </li>
-                    <li class="active">Contact</li>
-                </ol>
-            </div>
-        </div>
-        <!-- /.row -->
-
-        <!-- Content Row -->
-        <div class="row">
-            <!-- Map Column -->
-            <div class="col-md-8">
-                <!-- Embedded Google Map -->
-                <iframe width="100%" height="400px" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com/maps?hl=en&amp;ie=UTF8&amp;ll=37.0625,-95.677068&amp;spn=56.506174,79.013672&amp;t=m&amp;z=4&amp;output=embed"></iframe>
-            </div>
-            <!-- Contact Details Column -->
-            <div class="col-md-4">
-                <h3>Contact Details</h3>
-                <p>
-                    3481 Melrose Place<br>Beverly Hills, CA 90210<br>
-                </p>
-                <p><i class="fa fa-phone"></i>
-                    <abbr title="Phone">P</abbr>: (123) 456-7890</p>
-                <p><i class="fa fa-envelope-o"></i>
-                    <abbr title="Email">E</abbr>: <a href="mailto:name@example.com">name@example.com</a>
-                </p>
-                <p><i class="fa fa-clock-o"></i>
-                    <abbr title="Hours">H</abbr>: Monday - Friday: 9:00 AM to 5:00 PM</p>
-                <ul class="list-unstyled list-inline list-social-icons">
-                    <li>
-                        <a href="#"><i class="fa fa-facebook-square fa-2x"></i></a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-linkedin-square fa-2x"></i></a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-twitter-square fa-2x"></i></a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-google-plus-square fa-2x"></i></a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <!-- /.row -->
-
-        <!-- Contact Form -->
-        <!-- In order to set the email address and subject line for the contact form go to the bin/contact_me.php file. -->
-        <div class="row">
-            <div class="col-md-8">
-                <h3>Send us a Message</h3>
-                <form name="sentMessage" id="contactForm" novalidate>
-                    <div class="control-group form-group">
-                        <div class="controls">
-                            <label>Full Name:</label>
-                            <input type="text" class="form-control" id="name" required data-validation-required-message="Please enter your name.">
-                            <p class="help-block"></p>
-                        </div>
+<div class="col-xs-12">
+    <div id="btn-search" class="nav-controller psuedo-link pull-right"><i class="fa fa-search"></i> Search</div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="col-md-3">
+                <div class="view">
+                    <div class="caption">
+                    <h3>Wiseberry</h3>
+                        <a href="" rel="tooltip" title="Add to Favorites"><span class="fa fa-heart-o fa-2x"></span></a>
+                        <a href="" rel="tooltip" title="View"><span class="fa fa-search fa-2x"></span></a>
                     </div>
-                    <div class="control-group form-group">
-                        <div class="controls">
-                            <label>Phone Number:</label>
-                            <input type="tel" class="form-control" id="phone" required data-validation-required-message="Please enter your phone number.">
-                        </div>
-                    </div>
-                    <div class="control-group form-group">
-                        <div class="controls">
-                            <label>Email Address:</label>
-                            <input type="email" class="form-control" id="email" required data-validation-required-message="Please enter your email address.">
-                        </div>
-                    </div>
-                    <div class="control-group form-group">
-                        <div class="controls">
-                            <label>Message:</label>
-                            <textarea rows="10" cols="100" class="form-control" id="message" required data-validation-required-message="Please enter your message" maxlength="999" style="resize:none"></textarea>
-                        </div>
-                    </div>
-                    <div id="success"></div>
-                    <!-- For success/fail messages -->
-                    <button type="submit" class="btn btn-primary">Send Message</button>
-                </form>
-            </div>
+                    <img src="http://wiseberryonline.com.au/agency/234/62001.jpg" class="img-responsive">
+                    <div class="propertyType unit">Unit</div>
+                </div>
+                <div class="info">
+                    <p class="small" style="text-overflow: ellipsis">CASTLE HILL</p>
+                    <p class="small wb-red">30/1-7 Hume Ave</p>
+                    <span class="wb wb-beds pull-right"> <strong>4</strong> </span>
+                    <span class="wb wb-baths pull-right"> <strong>3</strong> </span>
+                </div>
+                <div class="stats wb-red-bg">
+                    <span class="fa fa-heart-o" rel="tooltip" title="Liked"> <strong>47</strong></span>
+                    <span class="fa fa-eye" rel="tooltip" title="Viewed"> <strong>137</strong></span>
 
-        </div>
-        <!-- /.row -->
-
-        <hr>
-
-        <!-- Footer -->
-        <footer>
-            <div class="row">
-                <div class="col-lg-12">
-                    <p>Copyright &copy; Your Website 2014</p>
+                    <span class="fa fa-photo pull-right"  rel="tooltip" title="Photos"> <strong>4</strong></span>
                 </div>
             </div>
-        </footer>
+            <div class="col-md-3">
+                <div class="view">
+                    <div class="caption">
+                        <h3>Wiseberry</h3>
+                        <a href="" rel="tooltip" title="Add to Favorites"><span class="fa fa-heart-o fa-2x"></span></a>
+                        <a href="" rel="tooltip" title="View"><span class="fa fa-search fa-2x"></span></a>
+                    </div>
+                    <img src="http://wiseberryonline.com.au/agency/234/62018.jpg" class="img-responsive">
+                    <div class="propertyType land">Land</div>
+                </div>
+                <div class="info">
+                    <p class="small" style="text-overflow: ellipsis">CASTLE HILL</p>
+                    <p class="small wb-red">30/1-7 Hume Ave</p>
+                    <span class="wb wb-beds pull-right"> <strong>4</strong> </span>
+                    <span class="wb wb-baths pull-right"> <strong>3</strong> </span>
+                </div>
+                <div class="stats wb-red-bg">
+                    <span class="fa fa-heart-o" rel="tooltip" title="Liked"> <strong>47</strong></span>
+                    <span class="fa fa-eye" rel="tooltip" title="Viewed"> <strong>137</strong></span>
 
+                    <span class="fa fa-photo pull-right" rel="tooltip" title="Photos"> <strong>24</strong></span>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="view">
+                    <div class="caption">
+                        <h3>Wiseberry</h3>
+                        <a href="" rel="tooltip" title="Add to Favorites"><span class="fa fa-heart-o fa-2x"></span></a>
+                        <a href="" rel="tooltip" title="View"><span class="fa fa-search fa-2x"></span></a>
+                    </div>
+                    <img src="http://wiseberryonline.com.au/agency/237/61693.jpg" class="img-responsive">
+                    <div class="propertyType commercial">Commercial</div>
+                </div>
+                <div class="info">
+                    <p class="small" style="text-overflow: ellipsis">CASTLE HILL</p>
+                    <p class="small wb-red">30/1-7 Hume Ave</p>
+                    <span class="wb wb-beds pull-right"> <strong>4</strong> </span>
+                    <span class="wb wb-baths pull-right"> <strong>3</strong> </span>
+                </div>
+                <div class="stats wb-red-bg">
+                    <span class="fa fa-heart-o" rel="tooltip" title="Liked"> <strong>47</strong></span>
+                    <span class="fa fa-eye" rel="tooltip" title="Viewed"> <strong>137</strong></span>
+
+                    <span class="fa fa-photo pull-right" rel="tooltip" title="Photos"> <strong>2</strong></span>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="view">
+                    <div class="caption">
+                        <h3>Wiseberry</h3>
+                        <a href="" rel="tooltip" title="Add to Favorites"><span class="fa fa-heart-o fa-2x"></span></a>
+                        <a href="" rel="tooltip" title="View"><span class="fa fa-search fa-2x"></span></a>
+                    </div>
+                    <img src="http://lorempixel.com/400/300/fashion" class="img-responsive">
+                    <div class="propertyType house">House</div>
+                </div>
+                <div class="info">
+                    <p class="small" style="text-overflow: ellipsis">CASTLE HILL</p>
+                    <p class="small wb-red">30/1-7 Hume Ave</p>
+                    <span class="wb wb-beds pull-right"> <strong>4</strong> </span>
+                    <span class="wb wb-baths pull-right"> <strong>3</strong> </span>
+                </div>
+                <div class="stats wb-red-bg">
+                    <span class="fa fa-heart-o" rel="tooltip" title="Liked"> <strong>47</strong></span>
+                    <span class="fa fa-eye" rel="tooltip" title="Viewed"> <strong>137</strong></span>
+
+                    <span class="fa fa-photo pull-right" rel="tooltip" title="Photos"> <strong>12</strong></span>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="view">
+                    <div class="caption">
+                    <h3>Wiseberry</h3>
+                        <a href="" rel="tooltip" title="Add to Favorites"><span class="fa fa-heart-o fa-2x"></span></a>
+                        <a href="" rel="tooltip" title="View"><span class="fa fa-search fa-2x"></span></a>
+                    </div>
+                    <img src="http://lorempixel.com/400/300/people" class="img-responsive">
+                    <div class="propertyType unit">Unit</div>
+                </div>
+                <div class="info">
+                    <p class="small" style="text-overflow: ellipsis">CASTLE HILL</p>
+                    <p class="small wb-red">30/1-7 Hume Ave</p>
+                    <span class="wb wb-beds pull-right"> <strong>4</strong> </span>
+                    <span class="wb wb-baths pull-right"> <strong>3</strong> </span>
+                </div>
+                <div class="stats wb-red-bg">
+                    <span class="fa fa-heart-o" rel="tooltip" title="Liked"> <strong>47</strong></span>
+                    <span class="fa fa-eye" rel="tooltip" title="Viewed"> <strong>137</strong></span>
+
+                    <span class="fa fa-photo pull-right"  rel="tooltip" title="Photos"> <strong>4</strong></span>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="view">
+                    <div class="caption">
+                        <h3>Wiseberry</h3>
+                        <a href="" rel="tooltip" title="Add to Favorites"><span class="fa fa-heart-o fa-2x"></span></a>
+                        <a href="" rel="tooltip" title="View"><span class="fa fa-search fa-2x"></span></a>
+                    </div>
+                    <img src="http://lorempixel.com/400/300/nature" class="img-responsive">
+                    <div class="propertyType land">Land</div>
+                </div>
+                <div class="info">
+                    <p class="small" style="text-overflow: ellipsis">CASTLE HILL</p>
+                    <p class="small wb-red">30/1-7 Hume Ave</p>
+                    <span class="wb wb-beds pull-right"> <strong>4</strong> </span>
+                    <span class="wb wb-baths pull-right"> <strong>3</strong> </span>
+                </div>
+                <div class="stats wb-red-bg">
+                    <span class="fa fa-heart-o" rel="tooltip" title="Liked"> <strong>47</strong></span>
+                    <span class="fa fa-eye" rel="tooltip" title="Viewed"> <strong>137</strong></span>
+
+                    <span class="fa fa-photo pull-right" rel="tooltip" title="Photos"> <strong>24</strong></span>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="view">
+                    <div class="caption">
+                        <h3>Wiseberry</h3>
+                        <a href="" rel="tooltip" title="Add to Favorites"><span class="fa fa-heart-o fa-2x"></span></a>
+                        <a href="" rel="tooltip" title="View"><span class="fa fa-search fa-2x"></span></a>
+                    </div>
+                    <img src="http://lorempixel.com/400/300/food" class="img-responsive">
+                    <div class="propertyType commercial">Commercial</div>
+                </div>
+                <div class="info">
+                    <p class="small" style="text-overflow: ellipsis">CASTLE HILL</p>
+                    <p class="small wb-red">30/1-7 Hume Ave</p>
+                    <span class="wb wb-beds pull-right"> <strong>4</strong> </span>
+                    <span class="wb wb-baths pull-right"> <strong>3</strong> </span>
+                </div>
+                <div class="stats wb-red-bg">
+                    <span class="fa fa-heart-o" rel="tooltip" title="Liked"> <strong>47</strong></span>
+                    <span class="fa fa-eye" rel="tooltip" title="Viewed"> <strong>137</strong></span>
+
+                    <span class="fa fa-photo pull-right" rel="tooltip" title="Photos"> <strong>2</strong></span>
+                </div>
+            </div>
+        </div>
     </div>
-    <!-- /.container -->
+</div>
 
-    <!-- jQuery -->
-    <script src="js/jquery.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
-
-    <!-- Contact Form JavaScript -->
-    <!-- Do not edit these files! In order to set the email address and subject line for the contact form go to the bin/contact_me.php file. -->
-    <script src="js/jqBootstrapValidation.js"></script>
-    <script src="js/contact_me.js"></script>
-
-</body>
-
-</html>
+<nav class="animate">
+    <div class="container">
+    <div class="[ col-xs-12 ] search-params">
+        <header class="header">
+          <div class="header-masthead">
+              <div class="header-masthead-inner">
+                  <h1 class="inline">Search</h1>
+                  <form id="js-search" class="search-form" method="POST" action="{{ URL::to('search/forsale') }}" role="form" autocomplete="off">
+                  <div class="search-box">
+                      <select id="chosen-select" name="suburbs" class="chosen-select" style="width: 200px;" multiple data-placeholder="Type suburbs here..." tabindex="1">
+                      </select>
+                      <button class="btn-search" type="submit">
+                          <span class="glyph-search">search</span>
+                      </button>
+                  </div>
+              </form>
+              </div>
+          </div>
+      </header>
+        </div>
+    <span class="nav-controller psuedo-link pull-right"><i class="fa fa-close"></i> Close</span>
+</div>
+</nav>

@@ -11,19 +11,20 @@ class login_model extends CI_Model{
     return $query->result_array();
   }
 
+
   // Checks the database to see if the user exists
-  public function can_login($first_name, $password)
+  public function can_login($email_address, $password)
   {
-    $this->db->where('first_name', $first_name);
+    $this->db->where('email_address', $email_address);
     $this->db->where('password', $password);
     $query = $this->db->get('users');
 
     if($query->num_rows() > 0)
     {
-      return true;
+      return $query;
     }
     else {
-      return false;
+      return null;
     }
   }
 

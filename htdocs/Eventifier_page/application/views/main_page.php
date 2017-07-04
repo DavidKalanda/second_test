@@ -1,3 +1,8 @@
+
+<!-- Events Container -->
+<link href="<?php echo base_url();?>/css/homepage.css" rel="stylesheet">
+<script src="<?php echo base_url();?>/js/homepage.js" type="text/javascript"></script>
+
     <!-- Header Carousel -->
     <header id="myCarousel" class="carousel slide">
         <!-- Wrapper for slides -->
@@ -7,11 +12,8 @@
                   <video width="100%" src="videos/video06.mp4" autoplay loop ></video>
                 </div>
                 <div class="carousel-caption">
-                  <h1>Want to Create another Beautiful experience?</h1>
+                  <h1>Create another Beautiful experience</h1>
                   <h2>Because every Event counts</h2>
-                    <!-- <button type="button" class="btn btn-default btn-lg" href="<?= base_url('createEvent') ?>">
-                      <a>Create Event</a>
-                    </button> -->
                     <div class="">
                         <a class="btn btn-default btn-lg" href="<?= base_url('createEvent') ?>">Create Event</a>
                     </div>
@@ -29,15 +31,29 @@
             <div class="col-lg-12">
                 <h2 class="page-header">
                     Local Events
+                    <!-- <div class="container"> -->
+                          <!-- <div class="row"> -->
+                              <!-- <div class="col-md-4 col-md-offset-3"> -->
+                                  <form action="" class="search-form">
+                                      <div class="form-group has-feedback">
+                                  		<label for="search" class="sr-only">Search</label>
+                                  		<input type="text" class="form-control" name="search" id="search" placeholder="search">
+                              		    <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                                  	</div>
+                                  </form>
+                              <!-- </div> -->
+                          <!-- </div> -->
+                      <!-- </div> -->
                 </h2>
             </div>
             <br></br>
 
             <!-- Event info -->
+
             <?php foreach($events as $event): ?>
 
               <!-- handles the dates on the celandar -->
-              <?php
+              <!-- <?php
               $date=date_create($event['start_date']);
               $time=date_create($event['start_time']);
               ?>
@@ -56,40 +72,53 @@
                           <h4> <small><?php echo date_format($date,"\n l jS F Y") ?> - <?php echo date_format($time, 'g:i A') ?></small></h4>
                       </div>
                     </a>
-
-                      <!-- <div class="panel-body">
-                        <?php if (strlen($event['content'])>200): ?>
-                          <p><?= substr($event['content'],0,200) ?>...</p>
-                        <?php else: ?>
-  								        <?= $event['content'] ?>
-  							       <?php endif ?>
-                           <a href="#" class="btn btn-default">Learn More</a>
-                      </div> -->
-                      <div class="panel-footer text-center">
-                          <a href="#download"><span class="glyphicon glyphicon-download"></span></a>
-                          <a href="#facebook"><span class="fa fa-facebook"></span></a>
-                          <a href="#twitter"><span class="fa fa-twitter"></span></a>
-                          <a href="#"><span class="glyphicon glyphicon-share-alt"></span></a>
-                      </div>
+                    <div class="panel-footer text-center">
+                        <a href="#download"><span class="glyphicon glyphicon-download"></span></a>
+                        <a href="#facebook"><span class="fa fa-facebook"></span></a>
+                        <a href="#twitter"><span class="fa fa-twitter"></span></a>
+                        <a href="#"><span class="glyphicon glyphicon-share-alt"></span></a>
+                    </div>
                   </div>
                 </div>
              <?php endforeach ?>
         </div>
 
-        <hr>
+        <hr> -->
 
+        <?php for($i=0; $i < 9; $i++):?>
+
+        <?php endfor; ?>
+        <?php foreach ($events as $event): ?>
+        <?php $date=date_create($event['start_date']);$time=date_create($event['start_time']);?>
         <!-- Call to Action Section -->
-        <div class="well">
-            <div class="row">
-                <div class="col-md-8">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias, expedita, saepe, vero rerum deleniti beatae veniam harum neque nemo praesentium cum alias asperiores commodi.</p>
+        <div class="col-md-3">
+            <div class="view">
+                <div class="caption">
+                <h3>Wiseberry</h3>
+                    <a href="" rel="tooltip" title="Add to Favorites"><span class="fa fa-heart-o fa-2x"></span></a>
+                    <a href="<?= base_url('event') ?>/<?= ($event['event_id']) ?>" rel="tooltip" title="View"><span class="fa fa-search fa-2x"></span></a>
                 </div>
-                <div class="col-md-4">
-                    <a class="btn btn-lg btn-default btn-block" href="#">Call to Action</a>
+                <div class="image-container">
+                  <img src="uploads/<?= ($event['event_image']) ?>" class="img-responsive">
+                </div>
+                <div class="propertyType unit">
+                    $<?= ($event['price']) ?>
                 </div>
             </div>
-        </div>
+            <div class="info">
+                <p class="large" style="text-overflow: ellipsis"><?= ($event['title']) ?></p>
+                <p class="medium wb-red"><?php echo date_format($date,"\n l jS F Y") ?> - <?php echo date_format($time, 'g:i A') ?></p>
+                <span class="wb wb-beds pull-right"> <strong>4</strong> </span>
+                <span class="wb wb-baths pull-right"> <strong>3</strong> </span>
+            </div>
+            <div class="stats wb-red-bg">
+                <span class="fa fa-heart-o" rel="tooltip" title="Liked"> <strong>47</strong></span>
+                <span class="fa fa-eye" rel="tooltip" title="Viewed"> <strong>137</strong></span>
 
+                <span class="fa fa-photo pull-right"  rel="tooltip" title="Photos"> <strong>4</strong></span>
+            </div>
+        </div>
+      <?php endforeach; ?>
         <hr>
 
     </div>
@@ -107,6 +136,17 @@
         interval: 5000 //changes the speed
     })
     </script>
+
+    <!-- open login modal -->
+    <!-- <script>
+
+    <?php if (isset($_POST['login'])) { ?>
+      $(function(){
+        $("#login").modal('show');
+      });
+
+    <?php } ?>
+    </script> -->
 
 </body>
 </html>

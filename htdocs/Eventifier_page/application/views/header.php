@@ -14,7 +14,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
     <title>Eventifier</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <!-- Bootstrap Core CSS -->
     <link href="<?php echo base_url();?>/css/bootstrap.css" rel="stylesheet">
@@ -24,6 +24,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
     <!-- Custom Fonts -->
     <link href="<?php echo base_url();?>/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -47,33 +49,33 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <?php if (! isset($_SESSION['first_name'])): ?>
+                <?php if (! isset($_SESSION['email_address'])): ?>
                   <a class="navbar-brand" href="<?= base_url('homepage') ?>">
                 <?php else: ?>
                   <a class="navbar-brand" href="<?= base_url('userspage') ?>">
                 <?php endif; ?>
 
-                <img src="<?= base_url('') ?>images/logo_3.png" style="width:230px;height:60px; margin-left:-70px; margin-top:-10px;">
+                <img src="<?= base_url('') ?>images/logo_3.png" style="width:230px;height:100px; margin-left:-70px; margin-top:-30px;">
                 </a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
-                    <?php if (! isset($_SESSION['first_name'])): ?>
+                    <?php if (! isset($_SESSION['email_address'])): ?>
                     <!-- <li>
                         <a href="<?= base_url('login') ?>"><i class="fa fa-sign-in" aria-hidden="true"></i> Log in</a>
                     </li> -->
                     <li>
-                        <a data-target="#login" data-toggle="modal"><i class="fa fa-sign-in" aria-hidden="true"></i> Log in</a>
+                        <a href="<?= base_url('login') ?>"><i class="fa fa-sign-in" aria-hidden="true"></i> Log in</a>
                     </li>
                     <li>
-                        <a data-target="#signup" data-toggle="modal"><i class="fa fa-plus" aria-hidden="true"></i> Sign up</a>
+                        <a href="<?= base_url('signup') ?>"><i class="fa fa-plus" aria-hidden="true"></i> Sign up</a>
                     </li>
                     <li>
                         <a href="<?= base_url('register_your_organization') ?>"><i class="fa fa-building-o" aria-hidden="true"></i> Register your organization</a>
                     </li>
                     <?php endif ?>
-                    <?php if (isset($_SESSION['first_name'])): ?>
+                    <?php if (isset($_SESSION['email_address'])): ?>
                     <li>
                         <a href="<?= base_url('#') ?>"><i class="fa fa-comment" aria-hidden="true"></i> Message</a>
                     </li>
@@ -81,7 +83,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <a href="<?= base_url('#') ?>"><i class="fa fa-bell" aria-hidden="true"></i></i> Notification</a>
                     </li>
                     <!-- <?php endif ?>
-                    <?php if (isset($_SESSION['first_name'])): ?> -->
+                    <?php if (isset($_SESSION['email_address'])): ?> -->
                     <li>
                         <a href="<?= base_url('logout') ?>"><i class="fa fa-sign-out" aria-hidden="true"></i> Log out</a>
                     </li>
@@ -167,11 +169,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     									</div>
                       <br><br>
                         <label>Username</label>
-                        <input type="text" name="first_name" value="" autofocus/>
+                        <input type="text" name="first_name" autofocus required/>
                         <br /><br />
                         <div class="">
                           <label>Password</label>
-                          <input type="password" name="password" value=""/>
+                          <input type="password" name="password" required/>
                         </div>
                         <br /><br />
                         <div class="">
@@ -211,9 +213,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <input type="email" class="form-control" name="email_address" placeholder="Email" required="" value="<?php echo !empty($user['email'])?$user['email']:''; ?>">
                               <?php echo form_error('email_address','<span class="help-block">','</span>'); ?>
                             </div>
-                            <!-- <div class="form-group">
-                                <input type="text" class="form-control" name="phone" placeholder="Phone" value="<?php echo !empty($user['phone'])?$user['phone']:''; ?>">
-                            </div> -->
                             <div class="form-group">
                               <input type="password" class="form-control" name="password" placeholder="Password" required="">
                               <?php echo form_error('password','<span class="help-block">','</span>'); ?>

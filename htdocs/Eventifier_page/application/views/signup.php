@@ -1,53 +1,45 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Untitled</title>
+    <!-- <link rel="stylesheet" href="<?php echo base_url();?>/signup_assets/bootstrap/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="<?php echo base_url();?>/signup_assets/css/Login-Form-Clean.css">
+    <link rel="stylesheet" href="<?php echo base_url();?>/signup_assets/css/Registration-Form-with-Photo.css">
+    <link rel="stylesheet" href="<?php echo base_url();?>/signup_assets/css/styles.css">
 </head>
+
 <body>
-<div class="container" style="margin-top:50px;">
-  <div class="well well-lg">
-    <h2>User Registration</h2>
-    <br><br>
-    <?php echo form_open('Welcome/user_registration'); ?>
-        <div class="form-group">
-            <input autofoucus type="text" class="form-control" name="first_name" placeholder="Name" required="" value="<?php echo !empty($first_name['first_name'])?$first_name['first_name']:''; ?>">
-          <?php echo form_error('first_name','<span class="help-block">','</span>'); ?>
+    <div class="register-photo">
+        <div class="form-container">
+            <div class="image-holder"></div>
+            <?php echo form_open('Welcome/user_registration'); ?>
+                <h2 class="text-center"><strong>Create</strong> an account.</h2>
+                <div class="form-group">
+                    <input class="form-control" type="email" name="email_address" placeholder="Email">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="password" name="password" placeholder="Password">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="password" name="conf_password" placeholder="Password (repeat)">
+                </div>
+                <div class="form-group">
+                    <div class="checkbox">
+                        <label class="control-label">
+                            <input type="checkbox">I agree to the license terms.</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-primary btn-block" type="submit" name="register" style="background-color:rgb(229,28,113);">Sign Up</button>
+                </div><a href="#" class="already">You already have an account? Login here.</a></form>
+          </form>
         </div>
-        <div class="form-group">
-            <input type="text" class="form-control" name="last_name" placeholder="Last Name" required="" value="<?php echo !empty($last_name['last_name'])?$last_name['last_name']:''; ?>">
-          <?php echo form_error('last_name','<span class="help-block">','</span>'); ?>
-        </div>
-        <div class="form-group">
-            <input type="email" class="form-control" name="email_address" placeholder="Email" required="" value="<?php echo !empty($user['email'])?$user['email']:''; ?>">
-          <?php echo form_error('email_address','<span class="help-block">','</span>'); ?>
-        </div>
-        <!-- <div class="form-group">
-            <input type="text" class="form-control" name="phone" placeholder="Phone" value="<?php echo !empty($user['phone'])?$user['phone']:''; ?>">
-        </div> -->
-        <div class="form-group">
-          <input type="password" class="form-control" name="password" placeholder="Password" required="">
-          <?php echo form_error('password','<span class="help-block">','</span>'); ?>
-        </div>
-        <div class="form-group">
-          <input type="password" class="form-control" name="conf_password" placeholder="Confirm password" required="">
-          <?php echo form_error('conf_password','<span class="help-block">','</span>'); ?>
-        </div>
-        <div class="form-group">
-            <?php
-            if(!empty($user['gender']) && $user['gender'] == 'Female'){
-                $fcheck = 'checked="checked"';
-                $mcheck = '';
-            }else{
-                $mcheck = 'checked="checked"';
-                $fcheck = '';
-            }
-            ?>
-        </div>
-        <div class="form-group">
-            <input type="submit" name="regisSubmit" class="btn-primary" value="Submit"/>
-        </div>
-    </form>
-    <p class="footInfo">Already have an account? </p>
-      </div>
-</div>
+    </div>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
 </body>
+
 </html>

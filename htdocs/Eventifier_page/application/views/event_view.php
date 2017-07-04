@@ -28,7 +28,8 @@ $time=date_create($event[0]['start_time']);
 					Acceptance of an order by us is dependent on our suppliers ability to provide the product. (Paragraph 13.5.6)
 				</p>
 
-				<button type="submit" class="btn btn-primary">Get Ticket</button>
+				<button name="going" type="submit" class="btn btn-primary">Get Ticket</button>
+        <a class="btn btn-primary" href="<?= base_url('event_controller/add_attending')?>/<?= ($event[0]['event_id']) ?>/<?= $user_id  ?>">Attend</a>
 			</div>
 		</div>
 	</section>
