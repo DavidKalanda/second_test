@@ -22,7 +22,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               <img src="<?= base_url('') ?>images/logo4.png" alt="" class="image-circle">
             </div>
             <div class="form-group">
-                <input class="form-control" type="email" name="email_address" placeholder="Email">
+                <input class="form-control" type="email" name="email_address" placeholder="Email" autofocus>
             </div>
             <div class="form-group">
                 <input class="form-control" type="password" name="password" placeholder="Password">

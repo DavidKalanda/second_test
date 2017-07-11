@@ -10,9 +10,24 @@ class event_controller extends CI_Controller{
 		$this->load->view('footer');
 	}
 
+  public function editEvent($event_id)
+  {
+    $this->load->view('header');
+		$this->load->model('event_model');
+    $data['event'] = $this->event_model->currentEvent($event_id);
+    $this->load->view('edit',$data);
+    $this->load->view('footer');
+  }
+
   // Loads the event that was clicked
 	public function event_view($id)
 	{
+    // if (isset($_SESSION['user_id'])) {
+    //   $_SESSION['user_id'] =='0';
+    // }else {
+    //   $data['user_id'] = $_SESSION['user_id'];
+    // }
+
 		$this->load->view('header');
 		$this->load->model('event_model');
 		$data['event'] = $this->event_model->currentEvent($id);
@@ -36,7 +51,7 @@ class event_controller extends CI_Controller{
 		$this->load->view('main_page',$data);
 	}
 
-  //
+  // adds user and event id to the attending table-header-group
   public function add_attending($event_id, $user_id)
   {
     echo $event_id . " / " . $user_id;
@@ -86,18 +101,25 @@ class event_controller extends CI_Controller{
 			$this->form_validation->set_rules('title', 'title', 'required');
 			$this->form_validation->set_rules('start_date', 'start_date', 'required');
 			$this->form_validation->set_rules('start_time', 'start_time', 'required');
+      $this->form_validation->set_rules('end_date', 'end_date', 'required');
+      $this->form_validation->set_rules('end_time', 'end_time', 'required');
 			$this->form_validation->set_rules('content', 'content', 'required');
 			$this->form_validation->set_rules('address', 'address', 'required');
 			$this->form_validation->set_rules('price', 'price', 'required');
+      $this->form_validation->set_rules('category', 'category', 'required');
 			$this->form_validation->set_rules('event_image', 'event_image');
 
 			$userData = array(
 					'title' => $this->input->post('title'),
 					'start_date' => $this->input->post('start_date'),
 					'start_time' => $this->input->post('start_time'),
+          'end_date' => $this->input->post('end_date'),
+          'end_time' => $this->input->post('end_time'),
 					'content' => $this->input->post('content'),
 					'address' => $this->input->post('address'),
 					'price' => $this->input->post('price'),
+          'category' => $this->input->post('category'),
+          'created_by'=> $_SESSION['user_id'],
 					'event_image' => $_FILES["event_image"]["name"]
 			);
 
@@ -105,7 +127,8 @@ class event_controller extends CI_Controller{
 					$insert = $this->db->insert('events',$userData);
 					if($insert){
 							$this->session->set_userdata('success_msg', 'Event was created successfully.');
-							$this->load->view('userspage');
+
+              redirect('/userspage');
 							$this->do_upload();
 					}else{
 							$data['error_msg'] = 'Some problems occured, please try again.';
@@ -113,13 +136,67 @@ class event_controller extends CI_Controller{
 			}
 
 	   }else{
-		redirect('/userspage');
+		redirect('/createEvent');
 	}
   }else {
     redirect('/signup');
   }
+ }
+ /*
+ * Edit event in database
+ */
+ public function edit_event($event_id){
+ $data = array();
+ $userData = array();
 
-  }
+ if (isset($_SESSION['email_address'])) {
+ if($this->input->post('update')){
+     $this->form_validation->set_rules('title', 'title', 'required');
+     $this->form_validation->set_rules('start_date', 'start_date', 'required');
+     $this->form_validation->set_rules('start_time', 'start_time', 'required');
+     $this->form_validation->set_rules('end_date', 'end_date', 'required');
+     $this->form_validation->set_rules('end_time', 'end_time', 'required');
+     $this->form_validation->set_rules('content', 'content', 'required');
+     $this->form_validation->set_rules('address', 'address', 'required');
+     $this->form_validation->set_rules('price', 'price', 'required');
+     $this->form_validation->set_rules('category', 'category', 'required');
+     $this->form_validation->set_rules('event_image', 'event_image');
+
+     $eventData = array(
+         'title' => $this->input->post('title'),
+         'start_date' => $this->input->post('start_date'),
+         'start_time' => $this->input->post('start_time'),
+         'end_date' => $this->input->post('end_date'),
+         'end_time' => $this->input->post('end_time'),
+         'content' => $this->input->post('content'),
+         'address' => $this->input->post('address'),
+         'price' => $this->input->post('price'),
+         'category' => $this->input->post('category'),
+         'created_by'=> $_SESSION['user_id'],
+         'event_image' => $_FILES["event_image"]["name"]
+     );
+
+     if($this->form_validation->run() == true){
+         $this->db->where('event_id', $event_id);
+         $update = $this->db->replace('events',$eventData);
+         if($update){
+             $this->session->set_userdata('success_msg', 'Event was created successfully.');
+
+             redirect('/profile');
+             $this->do_upload();
+         }else{
+             $data['error_msg'] = 'Some problems occured, please try again.';
+         }
+     }
+
+    }else{
+   redirect('/createEvent');
+ }
+ }else {
+   redirect('/signup');
+ }
+}
+
 }
 
  ?>

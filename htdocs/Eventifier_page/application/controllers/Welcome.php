@@ -80,7 +80,9 @@ class Welcome extends CI_Controller {
 	public function user_profile()
 	{
 		$this->load->view('header');
-	 	$this->load->view('user_profile');
+		$this->load->model('event_model');
+		$data['events']=$this->event_model->usersEvents($_SESSION['favourite']);
+	 	$this->load->view('user_profile',$data);
 		$this->load->view('footer');
 	}
 
@@ -242,7 +244,10 @@ class Welcome extends CI_Controller {
 					'email_address'=> $email_address,
 					'first_name' => $row->first_name,
 					'last_name'=>$row->last_name,
-					'user_id'=>$row->user_id
+					'user_id'=>$row->user_id,
+					'profile_picture'=>$row->profile_picture,
+					'friend_count'=>$row->friend_count,
+					'favourite'=>$row->favourite
 				);
 			}
 			$this->session->set_userdata($session_data);

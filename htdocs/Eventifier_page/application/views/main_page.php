@@ -31,63 +31,18 @@
             <div class="col-lg-12">
                 <h2 class="page-header">
                     Local Events
-                    <!-- <div class="container"> -->
-                          <!-- <div class="row"> -->
-                              <!-- <div class="col-md-4 col-md-offset-3"> -->
-                                  <form action="" class="search-form">
-                                      <div class="form-group has-feedback">
-                                  		<label for="search" class="sr-only">Search</label>
-                                  		<input type="text" class="form-control" name="search" id="search" placeholder="search">
-                              		    <span class="glyphicon glyphicon-search form-control-feedback"></span>
-                                  	</div>
-                                  </form>
-                              <!-- </div> -->
-                          <!-- </div> -->
-                      <!-- </div> -->
+
+                  <form action="" class="search-form">
+                      <div class="form-group has-feedback">
+                  		<label for="search" class="sr-only">Search</label>
+                  		<input type="text" class="form-control" name="search" id="search" placeholder="search">
+              		    <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                  	</div>
+                  </form>
                 </h2>
             </div>
             <br></br>
 
-            <!-- Event info -->
-
-            <?php foreach($events as $event): ?>
-
-              <!-- handles the dates on the celandar -->
-              <!-- <?php
-              $date=date_create($event['start_date']);
-              $time=date_create($event['start_time']);
-              ?>
-
-              <div class="col-xs-12 col-md-4">
-                  <div class="panel panel-default">
-                    <a style= "text-decoration:none; color:black" href="<?= base_url('event') ?>/<?= ($event['event_id']) ?>">
-                      <div class="panel-image">
-                        <div class="event_picture">
-                          <div class="event_price">
-                            <h6><b>$<?= ($event['price']) ?></b></h6>
-                          </div>
-                          <img src="uploads/<?= ($event['event_image']) ?>" class="panel-image-preview" />
-                        </div>
-                          <h4><?= ($event['title']) ?></h4>
-                          <h4> <small><?php echo date_format($date,"\n l jS F Y") ?> - <?php echo date_format($time, 'g:i A') ?></small></h4>
-                      </div>
-                    </a>
-                    <div class="panel-footer text-center">
-                        <a href="#download"><span class="glyphicon glyphicon-download"></span></a>
-                        <a href="#facebook"><span class="fa fa-facebook"></span></a>
-                        <a href="#twitter"><span class="fa fa-twitter"></span></a>
-                        <a href="#"><span class="glyphicon glyphicon-share-alt"></span></a>
-                    </div>
-                  </div>
-                </div>
-             <?php endforeach ?>
-        </div>
-
-        <hr> -->
-
-        <?php for($i=0; $i < 9; $i++):?>
-
-        <?php endfor; ?>
         <?php foreach ($events as $event): ?>
         <?php $date=date_create($event['start_date']);$time=date_create($event['start_time']);?>
         <!-- Call to Action Section -->

@@ -59,6 +59,7 @@ $route['contact']= 'Welcome/contact';
 $route['userspage']= 'Welcome/userspage';
 $route['logout']= 'Welcome/logout';
 $route['createEvent']= 'event_controller/createEvent';
+$route['editEvent/(:num)']= 'event_controller/editEvent/$1';
 $route['event/(:num)'] = 'event_controller/event_view/$1';
 $route['add_attending/(:num)/(:num)'] = 'event_controller/add_attending/$1/$2';
 $route['profile']= 'Welcome/user_profile';

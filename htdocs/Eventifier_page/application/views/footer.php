@@ -5,7 +5,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
-                    <img src="images/logo_1.png" style="width:200px;height:50px; margin-left: -40px; margin-top: 20px">
+                    <img src="images/logo_3.png" style="width:200px;height:50px; margin-left: -40px; margin-top: 20px">
                 </div>
                 <div class="col-lg-2  col-md-3 col-sm-4 col-xs-6">
                     <ul>
@@ -46,3 +46,6 @@
         </div>
     </div>
 </footer>
+</body>
+
+</html>

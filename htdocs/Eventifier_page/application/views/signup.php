@@ -18,7 +18,7 @@
             <?php echo form_open('Welcome/user_registration'); ?>
                 <h2 class="text-center"><strong>Create</strong> an account.</h2>
                 <div class="form-group">
-                    <input class="form-control" type="email" name="email_address" placeholder="Email">
+                    <input class="form-control" type="email" name="email_address" placeholder="Email" autofocus>
                 </div>
                 <div class="form-group">
                     <input class="form-control" type="password" name="password" placeholder="Password">
@@ -34,7 +34,7 @@
                 </div>
                 <div class="form-group">
                     <button class="btn btn-primary btn-block" type="submit" name="register" style="background-color:rgb(229,28,113);">Sign Up</button>
-                </div><a href="#" class="already">You already have an account? Login here.</a></form>
+                </div><a href="<?= base_url('login') ?>" class="already">You already have an account? Login here.</a></form>
           </form>
         </div>
     </div>
