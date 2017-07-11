@@ -1,0 +1,13 @@
+#welcome_message {
+  background-color:#fff;
+  text-align: center;
+  color:#e51c71;
+  padding-top:10em;
+  /*border-style: solid;*/
+  /*border-bottom: solid #000 1px;*/
+}
+
+.typewrite { color:#e51c71; text-decoration: none;}
+.page-header{
+  border-bottom:0px;
+}

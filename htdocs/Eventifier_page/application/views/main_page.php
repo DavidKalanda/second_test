@@ -75,6 +75,7 @@
         </div>
       <?php endforeach; ?>
         <hr>
+      </div>
 
     </div>
     <!-- /.container -->

@@ -64,7 +64,7 @@
 				<div class="tab-content">
 
 		            <div class="tab-pane active" id="user1">
-		              <h1>Upcoming events</h1>
+		              <h1>My events</h1>
 									<div class="container">
 								    <ul class="timeline">
 											<?php foreach ($events as $event): ?>
@@ -86,7 +86,7 @@
 								                <ul class="dropdown-menu" role="menu">
 								                  <li><a href="<?= base_url('editEvent')?>/<?= ($event['event_id']) ?>">Edit</a></li>
 								                  <li class="divider"></li>
-								                  <li><a href="#">Delete</a></li>
+								                  <li><a href="#" data-toggle="modal" data-target="#delete">Delete</a></li>
 								                </ul>
 								              </div>
 														</div>
@@ -95,7 +95,25 @@
 												<?php endforeach; ?>
 								    </ul>
 								</div>
+								<div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+						        <div class="modal-dialog">
+						            <div class="modal-content">
+						                <div class="modal-header">
+						                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+						                    <h4 class="modal-title custom_align" id="Heading">Delete</h4>
+						                </div>
+														<div class="modal-body">
+												        <p>You are about to delete.</p>
+												        <p>Do you want to proceed?</p>
+												    </div>
+														<div class="modal-footer">
+												      <a href="#" id="btnYes" class="btn danger">Yes</a>
+												      <a href="#" data-dismiss="modal" aria-hidden="true" class="btn secondary">No</a>
+												    </div>
 
+						            </div><!-- /.modal-content -->
+						        </div><!-- div class="modal-dialog -->
+						    </div>
            			</div>
            			<div class="tab-pane" id="user2">
 		              <h1>Page 2</h1>

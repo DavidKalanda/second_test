@@ -16,9 +16,15 @@
         <div class="form-container">
             <div class="image-holder"></div>
             <?php echo form_open('Welcome/user_registration'); ?>
-                <h2 class="text-center"><strong>Create</strong> an account.</h2>
+                <h3 class="text-center"><strong>Create</strong> an account.</h3>
                 <div class="form-group">
-                    <input class="form-control" type="email" name="email_address" placeholder="Email" autofocus>
+                    <input class="form-control" type="text" name="first_name" placeholder="First Name" autofocus>
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="last_name" placeholder="Last Name">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="email" name="email_address" placeholder="Email">
                 </div>
                 <div class="form-group">
                     <input class="form-control" type="password" name="password" placeholder="Password">
