@@ -11,6 +11,12 @@ class login_model extends CI_Model{
     return $query->result_array();
   }
 
+  public function get_user($user_id)
+  {
+    $this->db->where('user_id',$user_id);
+    $query = $this->db->get('users');
+    return $query->result_array()[0];
+  }
 
   // Checks the database to see if the user exists
   public function can_login($email_address, $password)

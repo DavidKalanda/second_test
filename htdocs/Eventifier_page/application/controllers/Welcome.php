@@ -77,11 +77,13 @@ class Welcome extends CI_Controller {
 		$this->load->view('footer');
   }
 
-	public function user_profile()
+	public function user_profile($user_id)
 	{
-		$this->load->view('header');
 		$this->load->model('event_model');
+		$this->load->model('Login_model');
+		$data['user']=$this->Login_model->get_user($user_id);
 		$data['events']=$this->event_model->usersEvents($_SESSION['favourite']);
+		$this->load->view('header',$data);
 	 	$this->load->view('user_profile',$data);
 		$this->load->view('footer');
 	}
@@ -91,7 +93,7 @@ class Welcome extends CI_Controller {
 	{
 		if (isset($_SESSION['email_address'])) {
 			$this->load->model('Login_model');
-			$data['users'] = $this->Login_model->all_users();
+			$data['user'] = $this->Login_model->get_user($_SESSION['user_id']);
 			$this->load->view('header',$data);
 			$this->outputEvent();
 			$this->load->view('footer');
@@ -137,6 +139,16 @@ class Welcome extends CI_Controller {
 		$this->load->view('main_page',$data);
 	}
 
+	//
+	public function addFollower($follower_id, $followee_id)
+	{
+		// echo $follower_id . " / " . $followee_id;
+		$data = array(
+      'follower_id' => $follower_id,
+      'followee_id'=>$followee_id);
+    $this->db->insert('following',$data);
+	  $this->user_profile();
+	}
 
 	public function org_registration(){
 		$data = array();
@@ -187,11 +199,15 @@ class Welcome extends CI_Controller {
 			$userData = array();
 
 			if(isset($_POST['register'])){
+				  $this->form_validation->set_rules('first_name','first_name','required');
+					$this->form_validation->set_rules('last_name','last_name','required');
 					$this->form_validation->set_rules('email_address', 'email_address', 'required|valid_email');//|callback_email_check
 					$this->form_validation->set_rules('password', 'password', 'required');
 					$this->form_validation->set_rules('conf_password', 'conf_password', 'required|matches[password]');
 
 					$userData = array(
+							'first_name' => strip_tags($this->input->post('first_name')),
+							'last_name' => strip_tags($this->input->post('last_name')),
 							'email_address' => strip_tags($this->input->post('email_address')),
 							'password' => $this->input->post('password'));
 

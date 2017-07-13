@@ -3,10 +3,9 @@
 <link href="<?php echo base_url();?>/css/homepage.css" rel="stylesheet">
 <script src="<?php echo base_url();?>/js/userspage.js" type="text/javascript"></script>
 <script src="<?php echo base_url();?>/js/homepage.js" type="text/javascript"></script>
-
   <div id="welcome_message" class="container" style="height: 350px; width: 100%; overflow: hidden;">
     <h1>
-      <a href="" class="typewrite" data-period="2000" data-type='[ "Welcome <?=$_SESSION['first_name'] ?>!", "Scroll Down to see upcoming events" ]'>
+      <a href="" class="typewrite" data-period="2000" data-type='[ "Welcome <?=$user['first_name'] ?>!", "Scroll Down to see whats poping" ]'>
         <span class="wrap"></span>
       </a>
     </h1>
@@ -15,28 +14,18 @@
     <div class="container">
         <!-- Marketing Icons Section -->
         <div class="row">
-            <div class="col-lg-12">
-                <h3 class="page-header">
-                  <div class="dropdown">
-                    <hr>
-                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Events
-                      <span class="caret"></span>
-                    </button>
-                      <ul class="dropdown-menu">
-                        <li><a href="#">All Events</a></li>
-                        <li><a href="#">Your Events</a></li>
-                      </ul>
-                    </div>
-                </h3>
-            </div>
+          <a class="btn btn-primary" href="<?= base_url('createEvent') ?>">Create Event</a>
+          <a href="#" class="btn"><i class="icon-align-justify"></i> <strong>List</strong></a>
         </div>
-        <!-- <a class="btn btn-lg btn-default btn-block" href="<?= base_url('createEvent') ?>">Create Event</a> -->
-        <!-- <hr> -->
+        <!-- <div class="row"> -->
+
+        <!-- </div> -->
+        <!-- <a class="btn btn-primary" href="<?= base_url('createEvent') ?>">Create Event</a> -->
+        <hr>
 
         <!-- Call to Action  -->
         <?php foreach ($events as $event): ?>
         <?php $date=date_create($event['start_date']);$time=date_create($event['start_time']);?>
-
         <!-- Call to Action Section -->
         <div class="col-md-3">
             <div class="view">
@@ -55,6 +44,7 @@
             <div class="info">
                 <p class="large" style="text-overflow: ellipsis"><?= ($event['title']) ?></p>
                 <p class="medium wb-red"><?php echo date_format($date,"\n l jS F Y") ?> - <?php echo date_format($time, 'g:i A') ?></p>
+                <p><a href="<?= base_url('profile') ?>/<?= ($event['created_by']) ?>"><?= ($event['created_by']) ?></a></p>
                 <span class="wb wb-beds pull-right"> <strong>4</strong> </span>
                 <span class="wb wb-baths pull-right"> <strong>3</strong> </span>
             </div>
@@ -64,9 +54,9 @@
                 <span class="fa fa-photo pull-right"  rel="tooltip" title="Photos"> <strong>4</strong></span>
             </div>
         </div>
-      <?php endforeach; ?>
+        <?php endforeach; ?>
 
-        <hr>
+
     </div>
     <!-- /.container -->
 

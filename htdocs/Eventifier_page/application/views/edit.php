@@ -79,7 +79,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                       <!-- <input type="file" name="event_image" id="js-upload-files" multiple> -->
                       <?php $error=""; ?>
                       <?php echo $error;?>
-                      <input type="file" name="event_image" size="20" />
+                      <input type="file" name="event_image" size="20" value="<?= ($event[0]['event_image']) ?>"/>
                     </div>
                     <!-- <button type="upload" class="btn btn-sm btn-primary" id="js-upload-submit">Upload files</button> -->
                   </div>

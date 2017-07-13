@@ -88,7 +88,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <a href="<?= base_url('logout') ?>"><i class="fa fa-sign-out" aria-hidden="true"></i> Log out</a>
                     </li>
                     <li>
-                      <a href="<?= base_url('profile') ?>"><i class="fa fa-user" aria-hidden="true"></i> <?=$_SESSION['first_name'] ?></a>
+                        <a href="<?= base_url('profile') ?>/<?= ($_SESSION['user_id']) ?>"><i class="fa fa-user" aria-hidden="true"></i> <?=$_SESSION['first_name'] ?></a>
                     </li>
                     <?php endif ?>
                     <!-- <li class="dropdown">
