@@ -49,7 +49,7 @@
         <div class="col-md-3">
             <div class="view">
                 <div class="caption">
-                <h3>Wiseberry</h3>
+                <h3><?= ($event['title']) ?></h3>
                     <a href="" rel="tooltip" title="Add to Favorites"><span class="fa fa-heart-o fa-2x"></span></a>
                     <a href="<?= base_url('event') ?>/<?= ($event['event_id']) ?>" rel="tooltip" title="View"><span class="fa fa-search fa-2x"></span></a>
                 </div>
@@ -63,6 +63,7 @@
             <div class="info">
                 <p class="large" style="text-overflow: ellipsis"><?= ($event['title']) ?></p>
                 <p class="medium wb-red"><?php echo date_format($date,"\n l jS F Y") ?> - <?php echo date_format($time, 'g:i A') ?></p>
+                <p><a href="<?= base_url('profile') ?>/<?= ($event['created_by']) ?>"><?= ($event['created_by']) ?></a></p>
                 <span class="wb wb-beds pull-right"> <strong>4</strong> </span>
                 <span class="wb wb-baths pull-right"> <strong>3</strong> </span>
             </div>

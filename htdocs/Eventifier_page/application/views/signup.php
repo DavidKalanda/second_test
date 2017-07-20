@@ -18,29 +18,30 @@
             <?php echo form_open('Welcome/user_registration'); ?>
                 <h3 class="text-center"><strong>Create</strong> an account.</h3>
                 <div class="form-group">
-                    <input class="form-control" type="text" name="first_name" placeholder="First Name" autofocus>
+                    <input class="form-control" type="text" name="first_name" placeholder="First Name" value="<?php echo set_value('first_name'); ?>"autofocus><div style="color:red"><strong><?php echo form_error('first_name'); ?></strong></div>
                 </div>
                 <div class="form-group">
-                    <input class="form-control" type="text" name="last_name" placeholder="Last Name">
+                    <input class="form-control" type="text" name="last_name" placeholder="Last Name" value="<?php echo set_value('last_name'); ?>"><div style="color:red"><strong><?php echo form_error('last_name'); ?></strong></div>
                 </div>
                 <div class="form-group">
-                    <input class="form-control" type="email" name="email_address" placeholder="Email">
+                    <input class="form-control" type="email" name="email_address" placeholder="Email" value="<?php echo set_value('email_address'); ?>"><div style="color:red"><strong><?php echo form_error('email_address'); ?></strong></div>
                 </div>
                 <div class="form-group">
-                    <input class="form-control" type="password" name="password" placeholder="Password">
+                    <input class="form-control" type="password" name="password" placeholder="Password"><div style="color:red"><strong><?php echo form_error('password'); ?></strong></div>
                 </div>
                 <div class="form-group">
-                    <input class="form-control" type="password" name="conf_password" placeholder="Password (repeat)">
+                    <input class="form-control" type="password" name="conf_password" placeholder="Password (repeat)"><div style="color:red"><strong><?php echo form_error('conf_password'); ?></strong></div>
                 </div>
                 <div class="form-group">
                     <div class="checkbox">
                         <label class="control-label">
-                            <input type="checkbox">I agree to the license terms.</label>
+                            <input type="checkbox" onchange="document.getElementById('register').disabled = !this.checked;">I agree to the license terms.</label>
                     </div>
                 </div>
                 <div class="form-group">
-                    <button class="btn btn-primary btn-block" type="submit" name="register" style="background-color:rgb(229,28,113);">Sign Up</button>
-                </div><a href="<?= base_url('login') ?>" class="already">You already have an account? Login here.</a></form>
+                    <button class="btn btn-primary btn-block" type="submit" name="register" style="background-color:rgb(229,28,113);" id="register" disabled>Sign Up</button>
+                    <h4><a href="<?= base_url('login') ?>" class="already">You already have an account? Login here.</a></h4>
+                </div>
           </form>
         </div>
     </div>

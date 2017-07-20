@@ -30,7 +30,7 @@
         <div class="col-md-3">
             <div class="view">
                 <div class="caption">
-                <h3>Wiseberry</h3>
+                <h3><?= ($event['title']) ?></h3>
                     <a href="" rel="tooltip" title="Add to Favorites"><span class="fa fa-heart-o fa-2x"></span></a>
                     <a href="<?= base_url('event') ?>/<?= ($event['event_id']) ?>" rel="tooltip" title="View"><span class="fa fa-search fa-2x"></span></a>
                 </div>

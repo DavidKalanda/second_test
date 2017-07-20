@@ -34,8 +34,19 @@ class login_model extends CI_Model{
     }
   }
 
+  public function is_following($follower_id, $followee_id)
+  {
+    $this->db->where('follower_id', $follower_id);
+    $this->db->where('followee_id', $followee_id);
+    $query = $this->db->get('following');
 
-
+    if ($query->num_rows() > 0)
+    {
+      return 'Unfollow';
+    }else {
+      return 'Follow';
+    }
+  }
 }
 
  ?>

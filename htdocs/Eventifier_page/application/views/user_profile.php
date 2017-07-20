@@ -30,10 +30,18 @@
 							<a class="user_image" href="#"><img class="img-responsive" src="images/me2.jpg"></a>
 							<span class="site-name"><?=$user['first_name'] ?>  <?=$user['last_name'] ?></span>
 							<?php if ($user['user_id'] != $_SESSION['user_id']): ?>
-								<span class="site-description">
-									<!-- <button class="followBtn followButton" rel="6" onclick="<?= base_url()?>Welcome/addFollower/<?= ($user['user_id']) ?>/<?=($_SESSION['user_id']) ?>">Follow</button> -->
-									<a onclick="changeText()" id="follow" class="followBtn followButton" href="<?= base_url('Welcome/addFollower')?>/<?= ($user['user_id']) ?>/<?=($_SESSION['user_id']) ?>">follow</a>
-								</span>
+								<?php if ($follow == 'Follow' ): ?>
+									<span class="site-description">
+										<!-- <button class="followBtn followButton" rel="6" onclick="<?= base_url()?>Welcome/addFollower/<?= ($user['user_id']) ?>/<?=($_SESSION['user_id']) ?>">Follow</button> -->
+										<a onclick="changeText()" id="follow" class="followBtn followButton" href="<?= base_url('Welcome/addFollower')?>/<?= ($user['user_id']) ?>/<?=($_SESSION['user_id']) ?>"><?=$follow ?></a>
+									</span>
+								<?php else: ?>
+									<span class="site-description">
+										<!-- <button class="followBtn followButton" rel="6" onclick="<?= base_url()?>Welcome/addFollower/<?= ($user['user_id']) ?>/<?=($_SESSION['user_id']) ?>">Follow</button> -->
+										<a onclick="changeText()" id="follow" class="followBtn followButton" href="<?= base_url('Welcome/removeFollower')?>/<?= ($user['user_id']) ?>/<?=($_SESSION['user_id']) ?>"><?=$follow ?></a>
+									</span>
+								<?php endif; ?>
+
 							<?php endif; ?>
 						</div>
 

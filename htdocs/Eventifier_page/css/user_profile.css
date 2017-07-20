@@ -330,7 +330,7 @@ display: inline-block;
 .followButton{
     width:160px;
 }
-button.followButton.following{
+a.followButton.following{
     background-color: #57A957;
     background-repeat: repeat-x;
     background-image: -khtml-gradient(linear, left top, left bottom, from(#62c462), to(#57a957));
@@ -346,7 +346,7 @@ button.followButton.following{
     border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
     color:#fff;
 }
-button.followButton.unfollow{
+a.followButton.unfollow{
     background-color: #C43C35;
     background-repeat: repeat-x;
     background-image: -khtml-gradient(linear, left top, left bottom, from(#ee5f5b), to(#c43c35));

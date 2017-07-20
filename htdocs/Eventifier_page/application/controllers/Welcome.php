@@ -83,6 +83,7 @@ class Welcome extends CI_Controller {
 		$this->load->model('Login_model');
 		$data['user']=$this->Login_model->get_user($user_id);
 		$data['events']=$this->event_model->usersEvents($_SESSION['favourite']);
+		$data['follow']=$this->Login_model->is_following($user_id,$_SESSION['user_id']);
 		$this->load->view('header',$data);
 	 	$this->load->view('user_profile',$data);
 		$this->load->view('footer');
@@ -139,7 +140,7 @@ class Welcome extends CI_Controller {
 		$this->load->view('main_page',$data);
 	}
 
-	//
+	//Addes a follower to the follow table
 	public function addFollower($follower_id, $followee_id)
 	{
 		// echo $follower_id . " / " . $followee_id;
@@ -147,7 +148,23 @@ class Welcome extends CI_Controller {
       'follower_id' => $follower_id,
       'followee_id'=>$followee_id);
     $this->db->insert('following',$data);
-	  $this->user_profile();
+
+		// reloads the user page
+	  //$this->user_profile($follower_id);
+		redirect('/profile/'.$follower_id);
+	}
+
+	//Removes a follower to the follow table
+	public function removeFollower($follower_id, $followee_id)
+	{
+		// echo $follower_id . " / " . $followee_id;
+		$data = array(
+      'follower_id' => $follower_id,
+      'followee_id'=>$followee_id);
+    $this->db->delete('following',$data);
+
+		// reloads the user page
+	  $this->user_profile($follower_id);
 	}
 
 	public function org_registration(){
@@ -194,46 +211,58 @@ class Welcome extends CI_Controller {
 		 * User registration
 		 *Adds a user into the database
 		 */
-	public function user_registration(){
-			$data = array();
-			$userData = array();
+		 public function user_registration(){
+	   $this->load->helper('array');
+	   //redirect('/signup');
+	    $data = array();
+	    $userData = array();
+	    if(isset($_POST['register'])){
+	       $this->form_validation->set_rules('first_name','first name','trim|required',
+	             array('required' => 'You must provide a %s.'));
+	      $this->form_validation->set_rules('last_name','last name','trim|required',
+	             array('required' => 'You must provide a %s.'));
+	      $this->form_validation->set_rules('email_address', 'Email Address', 'trim|required|valid_email|is_unique[users.email_address]',
+	             array('required' => 'You must provide an email address.',
+	             'valid_email' => 'Please provide a valid %s',
+	             'is_unique' => 'Email address already exists, Try signing in.'));//|callback_email_check
+	      $this->form_validation->set_rules('password', 'password', 'trim|required',
+	             array('required' => 'You must provide a %s.'));
+	      $this->form_validation->set_rules('conf_password', 'Password confirmation', 'trim|required|matches[password]',
+	             array('required' => 'You must provide a %s.',
+	             'matches' => '%s does not match with the password'));
+	      $userData = array(
+	        'first_name' => strip_tags($this->input->post('first_name')),
+	        'last_name' => strip_tags($this->input->post('last_name')),
+	        'email_address' => strip_tags($this->input->post('email_address')),
+	        'password' => md5($this->input->post('password')));
+	      if($this->form_validation->run() == true){
+	        $insert = $this->db->insert('users',$userData);
+	        if($insert){
+	          // $this->session->set_userdata($userData);
+	          $this->signupsuccess($userData);
+	        }else{
+	          $data['error_msg'] = 'Some problems occured, please try again.';
+	          //redirect('/signup');
+	        }
+	      }
+	      else {
+	       // $data['first_name'] = $userData;
+	       // redirect('/15');
+	       $this->load->view('header');
+	       $this->load->view('signup',$data);
+	       //$this->load->view('/signup', $data);
+	      }
+	    }
+	     //$data['email_address'] = $userData;
+	     //load the view
+	     //  $this->load->view('header');
+	     // $this->load->view('signup',$data);
+	     //$this->load->view('login', $data);
+	  }
 
-			if(isset($_POST['register'])){
-				  $this->form_validation->set_rules('first_name','first_name','required');
-					$this->form_validation->set_rules('last_name','last_name','required');
-					$this->form_validation->set_rules('email_address', 'email_address', 'required|valid_email');//|callback_email_check
-					$this->form_validation->set_rules('password', 'password', 'required');
-					$this->form_validation->set_rules('conf_password', 'conf_password', 'required|matches[password]');
-
-					$userData = array(
-							'first_name' => strip_tags($this->input->post('first_name')),
-							'last_name' => strip_tags($this->input->post('last_name')),
-							'email_address' => strip_tags($this->input->post('email_address')),
-							'password' => $this->input->post('password'));
-
-					if($this->form_validation->run() == true){
-							$insert = $this->db->insert('users',$userData);
-							if($insert){
-									$this->session->set_userdata('success_msg', 'Your registration was successfully. Please login to your account.');
-									redirect('/login');
-							}else{
-									$data['error_msg'] = 'Some problems occured, please try again.';
-									//redirect('/signup');
-							}
-					}
-					// else {
-					// 	$data['first_name'] = $userData;
-					// 	redirect('/15');
-					// 	//$this->load->view('/signup', $data);
-					// }
-			}
-
-				//$data['email_address'] = $userData;
-				//load the view
-				$this->load->view('header');
-				$this->load->view('signup',$data);
-				//$this->load->view('login', $data);
-
+	public function signupsuccess($data)
+	{
+	  $this->load->view('signupsuccess',$data);
 	}
 
 	// Validates the login information

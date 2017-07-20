@@ -15,7 +15,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <title>Eventifier</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
     <!-- Bootstrap Core CSS -->
     <link href="<?php echo base_url();?>/css/bootstrap.css" rel="stylesheet">
 
@@ -87,9 +87,30 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <li>
                         <a href="<?= base_url('logout') ?>"><i class="fa fa-sign-out" aria-hidden="true"></i> Log out</a>
                     </li>
-                    <li>
+                    <!-- <li>
                         <a href="<?= base_url('profile') ?>/<?= ($_SESSION['user_id']) ?>"><i class="fa fa-user" aria-hidden="true"></i> <?=$_SESSION['first_name'] ?></a>
-                    </li>
+                    </li> -->
+                    <!-- <li> -->
+                      <!-- <ul class="nav navbar-nav"> -->
+                        <li>
+                          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user" aria-hidden="true"></i> <?=$_SESSION['first_name'] ?> </a>
+                          <ul class="dropdown-menu">
+                            <li><a href="<?= base_url('profile') ?>/<?= ($_SESSION['user_id']) ?>">Profile <span class="glyphicon glyphicon-console pull-right"></span></a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">Account Settings <span class="glyphicon glyphicon-cog pull-right"></span></a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">User stats <span class="glyphicon glyphicon-stats pull-right"></span></a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">Messages <span class="badge pull-right"> 42 </span></a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">Favourites Snippets <span class="glyphicon glyphicon-heart pull-right"></span></a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">Sign Out <span class="glyphicon glyphicon-log-out pull-right"></span></a></li>
+                          </ul>
+                        </li>
+                      <!-- </ul> -->
+                    <!-- </li> -->
+
                     <?php endif ?>
                     <!-- <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Portfolio <b class="caret"></b></a>

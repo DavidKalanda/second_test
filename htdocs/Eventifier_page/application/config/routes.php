@@ -66,3 +66,4 @@ $route['profile/(:num)']= 'Welcome/user_profile/$1';
 $route['register_your_organization']= 'Welcome/register_your_organization';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
+$route['signupsuccess']='Welcome/signupsuccess';
