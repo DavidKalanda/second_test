@@ -275,7 +275,7 @@ class Welcome extends CI_Controller {
 	if ($this->form_validation->run())
 	{
 		$email_address = $this->input->post('email_address');
-		$password = $this->input->post('password');
+		$password = md5($this->input->post('password'));
 
 		// model function
 		$this->load->model('Login_model');
