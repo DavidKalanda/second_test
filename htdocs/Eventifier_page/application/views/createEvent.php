@@ -2,7 +2,8 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 ?>
-
+   <link href="<?php echo base_url();?>/css/search_location.css" rel="stylesheet">
+   <script src="<?php echo base_url();?>/js/search_location.js" type="text/javascript"></script>
    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
    <!-- <script type="text/javascript" src="js/bootstrap-filestyle.min.js"> </script> -->
@@ -12,8 +13,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div class="col-md-8 col-md-offset-1">
       <?php echo form_open_multipart('event_controller/create_event'); ?>
       <div class="form-horizontal" role="form">
-      <br><br><br></br>
-        <fieldset>
+      <fieldset style='margin-top:80px;'>
 
           <!-- Form Name -->
           <legend>Create Event</legend>
@@ -54,11 +54,44 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
           <!-- Add Google map-->
           <div class="form-group">
-            <div class="col-sm-4">
-              <input type="text" name="address" placeholder="Venue" class="form-control" required="required">
-              <a href="#">Add using Google Maps</a>
+            <div class="col-sm-4" id="locationField">
+              <input  id="autocomplete" placeholder="Venue" onfocus="geolocate()" type="text" class="form-control"></input>
+
             </div>
           </div>
+          <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAuJyGXC2nEUdfXif2YvrFbGZq2ZK6Bdig&libraries=places&callback=initAutocomplete" async defer></script>
+
+               <table id="address" class="invisible">
+                 <tr>
+                   <td class="label">Street address</td>
+                   <td class="slimField"><input class="field" id="street_number"
+                         disabled="true"></input></td>
+                   <td class="wideField" colspan="2"><input class="field" id="route"
+                         disabled="true"></input></td>
+                 </tr>
+                 <tr>
+                   <td class="label">City</td>
+                   <!-- Note: Selection of address components in this example is typical.
+                        You may need to adjust it for the locations relevant to your app. See
+                        https://developers.google.com/maps/documentation/javascript/examples/places-autocomplete-addressform
+                   -->
+                   <td class="wideField" colspan="3"><input class="field" id="locality"
+                         disabled="true"></input></td>
+                 </tr>
+                 <tr>
+                   <td class="label">State</td>
+                   <td class="slimField"><input class="field"
+                         id="administrative_area_level_1" disabled="true"></input></td>
+                   <td class="label">Zip code</td>
+                   <td class="wideField"><input class="field" id="postal_code"
+                         disabled="true"></input></td>
+                 </tr>
+                 <tr>
+                   <td class="label">Country</td>
+                   <td class="wideField" colspan="3"><input class="field"
+                         id="country" disabled="true"></input></td>
+                 </tr>
+               </table>
 
           <!-- Text input Content-->
           <div class="form-group row">

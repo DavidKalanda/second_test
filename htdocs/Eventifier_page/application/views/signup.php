@@ -35,7 +35,7 @@
                 <div class="form-group">
                     <div class="checkbox">
                         <label class="control-label">
-                            <input type="checkbox" onchange="document.getElementById('register').disabled = !this.checked;">I agree to the license terms.</label>
+                            <input type="checkbox" onchange="document.getElementById('register').disabled = !this.checked;">I agree to the I agree to the <a href= "#">license terms.</a></label>
                     </div>
                 </div>
                 <div class="form-group">

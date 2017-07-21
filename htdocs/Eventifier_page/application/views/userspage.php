@@ -50,7 +50,7 @@
             </div>
             <div class="stats wb-red-bg">
                 <span class="fa fa-heart-o" rel="tooltip" title="Liked"> <strong>47</strong></span>
-                <span class="fa fa-eye" rel="tooltip" title="Viewed"> <strong>137</strong></span>
+                <span class="fa fa-eye" rel="tooltip" title="Viewed"> <strong>13</strong></span>
                 <span class="fa fa-photo pull-right"  rel="tooltip" title="Photos"> <strong>4</strong></span>
             </div>
         </div>

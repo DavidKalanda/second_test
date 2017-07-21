@@ -19,6 +19,10 @@ class Welcome extends CI_Controller {
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
 
+ public function location(){
+	 	$this->load->view('location');
+	}
+
 	public function index()
 	{
 		$this->load->helper("form");
@@ -65,10 +69,18 @@ class Welcome extends CI_Controller {
 	// Opens signup page when link is clicked
 	public function signup()
 	{
+		$this->load->helper('email');
 		$this->load->view('header');
 		$this->load->view('signup');
 		//$this->load->view('footer');
 	}
+
+	//signupsuccess page
+		public function signupsuccess($data)
+		{
+			$this->load->view('signupsuccess',$data);
+		}
+
 	// registrater your organization
 	public function register_your_organization()
   {
@@ -259,11 +271,6 @@ class Welcome extends CI_Controller {
 	     // $this->load->view('signup',$data);
 	     //$this->load->view('login', $data);
 	  }
-
-	public function signupsuccess($data)
-	{
-	  $this->load->view('signupsuccess',$data);
-	}
 
 	// Validates the login information
 	public function login_validation(){
