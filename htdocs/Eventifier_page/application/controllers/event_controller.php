@@ -34,13 +34,34 @@ class event_controller extends CI_Controller{
     // }else {
     //   $data['user_id'] = $_SESSION['user_id'];
     // }
-
+    $this->checkIp($id);
 		$this->load->view('header');
 		$this->load->model('event_model');
 		$data['event'] = $this->event_model->currentEvent($id);
     $data['user_id'] = $_SESSION['user_id'];
 		$this->load->view('event_view',$data);
 	}
+
+  //check if the visitor has already seen the event
+  private function checkIp($event_id){
+    $ip= 0;
+    if(isset($_SESSION['user_id']))
+    {
+      $ip = $_SESSION['user_id'];
+    }else
+    {
+      $ip= inet_pton($this->input->ip_address());
+    }
+    $this->load->model('event_model');
+    $number_of_rows = $this->event_model->visitorCount($ip,$event_id);
+    if($number_of_rows==0){
+      $number_of_rows = $this->event_model->storeIP($ip,$event_id);
+      $userData = array(
+        'visitors' => $number_of_rows);
+      $this->db->where('event_id', $event_id);
+      $this->db->update('events',$userData);
+    }
+    }
 
   // Loads the users page with all the events
 	public function outputEvent()
@@ -111,7 +132,7 @@ class event_controller extends CI_Controller{
       $this->form_validation->set_rules('end_date', 'end_date', 'required');
       $this->form_validation->set_rules('end_time', 'end_time', 'required');
 			$this->form_validation->set_rules('content', 'content', 'required');
-			$this->form_validation->set_rules('address', 'address', 'required');
+			//$this->form_validation->set_rules('address', 'address', 'required');
 			$this->form_validation->set_rules('price', 'price', 'required');
       $this->form_validation->set_rules('category', 'category', 'required');
 			$this->form_validation->set_rules('event_image', 'event_image');
@@ -123,7 +144,8 @@ class event_controller extends CI_Controller{
           'end_date' => $this->input->post('end_date'),
           'end_time' => $this->input->post('end_time'),
 					'content' => $this->input->post('content'),
-					'address' => $this->input->post('address'),
+					//'address' => "hello", //$this->input->post('address'),
+          'city' => $this->input->post('city'),
 					'price' => $this->input->post('price'),
           'category' => $this->input->post('category'),
           'created_by'=> $_SESSION['user_id'],
@@ -138,7 +160,8 @@ class event_controller extends CI_Controller{
               redirect('/userspage');
 							$this->do_upload();
 					}else{
-							$data['error_msg'] = 'Some problems occured, please try again.';
+              echo "naaah";
+              // $data['error_msg'] = 'Some problems occured, please try again.';
 					}
 			}
 

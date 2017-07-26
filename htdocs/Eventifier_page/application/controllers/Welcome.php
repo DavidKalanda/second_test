@@ -33,7 +33,6 @@ class Welcome extends CI_Controller {
 		$this->load->view('footer');
 	}
 
-
 	// Loads the view for the welcome page with all the local events
 	public function loadPages()
 	{
@@ -48,6 +47,7 @@ class Welcome extends CI_Controller {
   {
 	 $this->load->view('header');
 	 $this->load->view('about');
+	 $this->load->view('footer');
   }
 
 	// Opens services page when link is clicked

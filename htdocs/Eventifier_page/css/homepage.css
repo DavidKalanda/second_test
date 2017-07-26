@@ -35,6 +35,8 @@
 .turqbg { background-color: #46D8D2; }
 .turq { color: #46D8D2; }
 .wb-red-bg { background-color: #c2185b; }
+/*for emoji*/
+/*.wb-red-bg { background-color: #eeeeee; border-top-width: 1px; border-top-style: solid; border-top-color: #d4d4d4;}*/
 .wb-red { color: #822433;}
 .white { color: #fff!important; }
 

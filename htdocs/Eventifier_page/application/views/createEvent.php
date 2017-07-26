@@ -75,8 +75,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         You may need to adjust it for the locations relevant to your app. See
                         https://developers.google.com/maps/documentation/javascript/examples/places-autocomplete-addressform
                    -->
-                   <td class="wideField" colspan="3"><input class="field" id="locality"
-                         disabled="true"></input></td>
+                   <td class="wideField" colspan="3"><input class="field" id="locality" name="city" disabled="true"></input></td>
                  </tr>
                  <tr>
                    <td class="label">State</td>

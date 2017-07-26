@@ -32,7 +32,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </div>
             <div class="form-group">
                 <button class="btn btn-primary btn-block" type="submit" style="background-color:rgb(229,28,113);">Log In</button>
-            </div><a href="#" class="forgot">Forgot your email or password?</a></form>
+            </div><a href="<?= base_url('signup') ?>" class="new">New to Relnos? Sign Up</a>
+            <a href="#" class="forgot">Forgot your email or password?</a></form>
     </div>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>

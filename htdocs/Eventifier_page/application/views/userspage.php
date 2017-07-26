@@ -3,6 +3,7 @@
 <link href="<?php echo base_url();?>/css/homepage.css" rel="stylesheet">
 <script src="<?php echo base_url();?>/js/userspage.js" type="text/javascript"></script>
 <script src="<?php echo base_url();?>/js/homepage.js" type="text/javascript"></script>
+<link href="<?php echo base_url();?>/emoji/twemoji-awesome.css" rel="stylesheet">
   <div id="welcome_message" class="container" style="height: 350px; width: 100%; overflow: hidden;">
     <h1>
       <a href="" class="typewrite" data-period="2000" data-type='[ "Welcome <?=$user['first_name'] ?>!", "Scroll Down to see whats poping" ]'>
@@ -48,11 +49,19 @@
                 <span class="wb wb-beds pull-right"> <strong>4</strong> </span>
                 <span class="wb wb-baths pull-right"> <strong>3</strong> </span>
             </div>
+            <!-- for emojis -->
+            <!-- <div class="stats wb-red-bg">
+              <span><i class="twa twa-lg twa-thought-balloon" rel="tooltip" title="Interested"></i><strong style="color: #c2185b; font-size: 15px;">137</strong></span>
+              <span style="margin-left: 6pc;"><i class="twa twa-lg twa-runner" rel="tooltip" title="Going"></i><strong style="color: #c2185b; font-size: 15px;">47</strong></span>
+              <span class="pull-right"><i class="twa twa-lg twa-eyeglasses" rel="tooltip" title="Views"></i><strong style="color: #c2185b; font-size: 15px;"><?= ($event['visitors']) ?></strong></span>
+            </div> -->
             <div class="stats wb-red-bg">
                 <span class="fa fa-heart-o" rel="tooltip" title="Liked"> <strong>47</strong></span>
-                <span class="fa fa-eye" rel="tooltip" title="Viewed"> <strong>13</strong></span>
+                <span class="fa fa-eye" rel="tooltip" title="Viewed"> <strong><?= ($event['visitors']) ?></strong></span>
+
                 <span class="fa fa-photo pull-right"  rel="tooltip" title="Photos"> <strong>4</strong></span>
             </div>
+
         </div>
         <?php endforeach; ?>
 

@@ -19,6 +19,25 @@ class event_model extends CI_Model{
     return $query->result_array();
   }
 
+  public function visitorCount($ip,$event_id)
+  {
+    $this->db->where('ip', $ip);
+    $this->db->where('event_id', $event_id);
+    $query = $this->db->get('visitors');
+    return $query->num_rows();
+  }
+
+  public function storeIp($ip,$event_id)
+  {
+    $userData = array(
+          'event_id' => $event_id,
+          'ip' => $ip);
+    $this->db->insert('visitors',$userData);
+    $this->db->where('event_id', $event_id);
+    $query = $this->db->get('visitors');
+    return $query->num_rows();
+  }
+
   public function localEvent($address)
   {
     $this->db->where('address', $address);

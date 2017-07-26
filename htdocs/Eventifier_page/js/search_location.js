@@ -56,11 +56,25 @@ function geolocate() {
         lat: position.coords.latitude,
         lng: position.coords.longitude
       };
+
+
       var circle = new google.maps.Circle({
         center: geolocation,
         radius: position.coords.accuracy
       });
       autocomplete.setBounds(circle.getBounds());
+      // reverseGeocode(geolocation[0],geolocation[1]);
     });
   }
 }
+
+// function reverseGeocode(latitude, longitude) {
+//   // var input = document.getElementById('latlng').value;
+//   // var latlngStr = input.split(',', 2);
+//   var latlng = {lat: parseFloat(latitude), lng: parseFloat(longitude)};
+//   geocoder.geocode({'location': latlng}, function(results, status) {
+//     if (status === 'OK') {
+//       if (results[1]) {
+//         alert(results[1].formatted_address);
+//       }
+// }

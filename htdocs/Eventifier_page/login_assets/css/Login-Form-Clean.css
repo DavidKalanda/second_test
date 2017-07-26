@@ -72,3 +72,19 @@
     height: 170px;
     border: 4px solid #FFF;
     margin: 10px;
+}
+
+.login-clean form .new {
+  display:block;
+  text-align:center;
+  font-size:18px;
+  color:#6f7a85;
+  opacity:0.9;
+  text-decoration:none;
+}
+
+.login-clean form .new:hover, .login-clean form .new:active {
+  opacity:1;
+  color: rgb(229,28,113);
+  text-decoration:none;
+}

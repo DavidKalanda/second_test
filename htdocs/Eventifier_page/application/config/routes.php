@@ -68,3 +68,4 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 $route['signupsuccess']='Welcome/signupsuccess';
 $route['location']= 'Welcome/location';
+$route['team']= 'Welcome/team';
